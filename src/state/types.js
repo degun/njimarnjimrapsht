@@ -1,0 +1,1 @@
+export const SET_TOP_CATEGORY = "SET_TOP_CATEGORY";

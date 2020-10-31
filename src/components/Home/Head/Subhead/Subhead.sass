@@ -1,0 +1,141 @@
+@import '../../../colors'
+
+.Subhead
+    width: 1366px
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+    align-items: center
+    font-family: "SF Pro", sans-serif
+    padding: 30px 0
+    border-bottom: 1px solid #eee
+    img 
+        width: 100px !important
+        height: auto
+    .utilities
+        width: calc( 100% - 250px )
+        height: 100%
+        display: flex
+        justify-content: flex-end
+        align-items: center
+        .item
+            margin-right: 30px
+            &:not(:first-child)
+                flex-grow: 1
+            .language
+                font-family: "SF Pro", sans-serif
+                color: $secondary
+                span, strong
+                    margin: 3px
+                &.selected
+                    font-weight: bold
+            .Polaris-TextField
+                width: 600px
+                background-color: $input-background
+                &.Polaris-TextField--focus
+                    color: $atttention
+                .Polaris-Icon
+                    stroke-width: 0px
+            .hyr
+                position: relative
+                display: flex
+                flex-direction: column
+                width: auto
+                button
+                    width: 100px
+                    font-size: 1.2rem 
+                    padding: 7px 0
+                    background-color: $atttention
+                    border-color: $atttention
+                    border: none
+                    color: white
+                    outline: none
+                    border-radius: 3px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    box-shadow: none
+                    font-family: "SF Pro", sans-serif
+                    transition: 0.2s background-color linear
+                    .Polaris-Icon
+                        margin: 0
+                    &:hover
+                        cursor: pointer
+                        background-color: mix(black, $atttention, 10)
+                    &:focus
+                        background-color:mix(black, $atttention, 20)
+                    .Polaris-Icon
+                        fill: transparent
+                        stroke: white
+                .register
+                    position: absolute
+                    bottom: -20px
+                    font-size: 1rem
+                    font-family: "SF Pro", sans-serif
+                    color: #ccc
+                    strong a 
+                        font-family: "SF Pro", sans-serif
+                        font-size: 1rem
+                        text-decoration: none
+                        color: $atttention
+            .heart-icons
+                position: relative
+                .Polaris-Icon
+                    margin: 0
+                    fill: transparent
+                    stroke: #333
+                    stroke-width: 2px
+                .quantity
+                    position: absolute
+                    right: -10px
+                    top: -2px
+                    background-color: $primary
+                    color: white
+                    border-radius: 50%
+                    width: 14px
+                    height: 14px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    font-size: 0.8rem
+            .kontakto
+                margin: 0 20px
+                width: 120px
+                font-size: 1.2rem
+                line-height: 1.3
+                color: $atttention
+            .cart
+                display: flex
+                justify-content: space-between
+                align-items: center
+                .cart-icons
+                    position: relative
+                    .Polaris-Icon
+                        fill: #573843
+                        stroke: transparent
+                    .quantity
+                        position: absolute
+                        right: -10px
+                        top: -2px
+                        background-color: $primary
+                        color: white
+                        border-radius: 50%
+                        width: 14px
+                        height: 14px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        font-size: 0.9rem
+                .words
+                    line-height: 1.1
+                    margin-left: 14px
+                    font-size: 1.4rem
+                    font-family: "SF Pro", sans-serif
+                    color: #573843
+                    .shporta
+                        font-weight: 900
+                        letter-spacing: 1px
+                        line-height: 1.4
+                    .cmimi
+                        color: #666
+                        font-size: 1rem

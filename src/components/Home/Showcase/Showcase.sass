@@ -1,0 +1,51 @@
+@import '../../colors.sass'
+
+.Showcase
+    width: 1366px
+    height: auto
+    margin: 40px auto
+    display: flex
+    flex-direction: column
+    background-color: $background
+    h2 
+        color: $tertiary
+        font-size: 2.4rem
+        font-family: "SF Pro", sans-serif
+        font-weight: bold
+        margin-bottom: 40px
+    .categories
+        width: 100%
+        height: auto
+        display: flex
+        justify-content: space-between
+        border-bottom: 4px solid $tertiary
+        padding-bottom: 0
+        margin-bottom: 0
+        ul.list
+            display: flex
+            width: calc( 100% - 50px ) 
+            margin: 0
+            padding-left: 0
+            li.collection
+                color: $tertiary
+                padding: 8px 40px
+                font-size: 1.5rem
+                display: flex
+                justify-content: center
+                align-items: center
+                height: 100%
+                margin-bottom: 0
+                transition: 0.1s background-color linear, 1.8s color cubic-bezier(.17,.67,.01,.88)
+                &:hover
+                    cursor: pointer
+                    background-color: mix(#fff, $tertiary, 95)
+                &.selected
+                    background-color: $tertiary
+                    color: $background
+        .arrows
+            width: 50px
+            display: flex
+            justify-content: space-between
+            svg:hover
+                cursor: pointer
+                

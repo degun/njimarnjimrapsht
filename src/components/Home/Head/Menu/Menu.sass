@@ -1,0 +1,106 @@
+@import '../../../colors'
+
+@keyframes dash
+  to
+    stroke-dashoffset: 0
+
+.Menu
+    position: relative
+    width: 1366px
+    height: 60px
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+    overflow: visible
+    nav 
+        display: flex
+        height: 100%
+        align-items: center
+        margin-top: 0
+        .link
+            display: flex
+            font-family: "SF Pro", sans-serif
+            color: $secondary
+            font-size: 1.7rem
+            padding: 0 20px
+            text-decoration: none
+            height: 100%
+            align-items: center
+            margin-top: 0
+            transition: 0.1s background-color cubic-bezier(.17,.67,.01,.88)
+            &:hover
+                cursor: pointer
+                background-color: mix(#fff, $secondary, 90)
+                color: #000
+            &:first-child
+                display: flex
+                padding-left: 0
+                width: 250px
+                background-color: $secondary
+                color: white
+                svg
+                    margin-right: 20px
+                    fill: white 
+                    height: 1.8rem
+                    margin-left: 20px
+                    &:hover path
+                        stroke-dasharray: 100
+                        stroke-dashoffset: 100
+                        animation: dash 1s linear forwards
+    .contact
+        display: flex
+        .contact-item
+            display: flex
+            align-items: center
+            font-size: 1.2rem
+            color: mix(white,$secondary,20%)
+            font-family: "SF Pro", sans-serif
+            margin-right: 20px
+            .Polaris-Icon
+                margin-right: 10px
+                fill: transparent
+                stroke: $secondary
+                stroke-width: 2px
+                height: 1.8rem
+    .collections
+        position: absolute
+        left: 0
+        top: 100%
+        padding: 0
+        margin: 0
+        width: 250px
+        height: 700px
+        transition: 0.3s max-height cubic-bezier(.17,.67,.01,.88)
+        background-color: mix(transparent, white, 8)
+        li 
+            display: flex
+            justify-content: space-between
+            align-items: center
+            list-style-type: none
+            width: 100%
+            padding: 14px 20px
+            background-color: $background
+            color: $secondary
+            &:hover
+                cursor: pointer
+                background-color: mix(white, $secondary, 90)
+            .Polaris-Icon
+                height: 1.4rem
+                fill: $secondary
+                margin: 0
+    .products
+        position: absolute
+        left: 250px
+        top: 100%
+        padding: 40px
+        margin: 0
+        width: calc( 100% - 250px )
+        height: 700px
+        transition: 0.3s max-height cubic-bezier(.17,.67,.01,.88)
+        background-color: $background
+        overflow: hidden
+        display: flex
+        flex-wrap: wrap
+        border: 1px solid #eee
+        gap: 20px
+        

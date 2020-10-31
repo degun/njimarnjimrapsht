@@ -1,0 +1,10 @@
+<svg id="Monotone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="25.6" viewBox="0 0 40 25.6">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Icon" d="M38,25.6H2A1.836,1.836,0,0,1,0,24V1.6A1.836,1.836,0,0,1,2,0H38a1.836,1.836,0,0,1,2,1.6V24A1.836,1.836,0,0,1,38,25.6ZM4,12.8v9.6H36V12.8ZM4,3.2V6.4H36V3.2Zm12,16H10a1.837,1.837,0,0,1-2-1.6A1.837,1.837,0,0,1,10,16h6a1.836,1.836,0,0,1,2,1.6A1.836,1.836,0,0,1,16,19.2Z" transform="translate(0 0)" fill="#00ad9a"/>
+    </clipPath>
+  </defs>
+  <g id="Group_44" data-name="Group 44" transform="translate(0 0)">
+    <path id="Icon-2" data-name="Icon" d="M38,25.6H2A1.836,1.836,0,0,1,0,24V1.6A1.836,1.836,0,0,1,2,0H38a1.836,1.836,0,0,1,2,1.6V24A1.836,1.836,0,0,1,38,25.6ZM4,12.8v9.6H36V12.8ZM4,3.2V6.4H36V3.2Zm12,16H10a1.837,1.837,0,0,1-2-1.6A1.837,1.837,0,0,1,10,16h6a1.836,1.836,0,0,1,2,1.6A1.836,1.836,0,0,1,16,19.2Z" transform="translate(0 0)" fill="#00ad9a"/>
+  </g>
+</svg>
