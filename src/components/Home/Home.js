@@ -1,28 +1,22 @@
 import React from 'react';
-import Head from './Head/Head';
+import Container from '../_common/Container';
+import Imazh from './Imazh/Imazh';
 import QuickInfo from './QuickInfo/QuickInfo';
 import Vitrine from './Showcase/Showcase';
-import { useQuery } from '@apollo/client';
-import { GET_COLLECTIONS } from '../../graphql/queries';
+import BlogPosts from './BlogPosts/BlogPosts';
 import './Home.sass';
 
 function Home() { 
-    const { data: collectionsCustom } = useQuery(GET_COLLECTIONS, {variables: {query: "collection_type:custom"}});
-    const collections = collectionsCustom?.collections?.edges?.map(({node}) => {
-        const {title, handle} = node;
-        return {title, handle}
-    }) ?? [];
-    const { data: collectionsManual } = useQuery(GET_COLLECTIONS, {variables: {query: "collection_type:smart"}});
-    const Scollections = collectionsManual?.collections?.edges?.map(({node}) => {
-        const {title, handle} = node;
-        return {title, handle}
-    }) ?? [];
-
     return(
         <div className="Home">
-            <Head collections={collections} />
-            <QuickInfo />
-            <Vitrine title="Produkte të zgjedhura" collections={Scollections} />
+            <Container>
+                <Imazh />
+                <QuickInfo />
+                <Vitrine title="Produkte të zgjedhura" variant="best-sellers" />
+                <Vitrine title="Produkte të tjera" variant="by-tag" />
+                <Vitrine title="Produkte sipas llojit" variant="by-type" />
+                <BlogPosts />
+            </Container>
         </div>
     )
  }

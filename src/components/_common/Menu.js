@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import { Icon } from '@shopify/polaris';
 import { PhoneMajor, EmailMajor, ChevronRightMinor } from '@shopify/polaris-icons';
-import Product from '../../../_common/Product';
-import { hamburger } from '../../../icons';
+import Product from './Product';
+import { hamburger } from '../icons';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GET_COLLECTION_PRODUCTS } from '../../../../graphql/queries';
+import { useSelector } from 'react-redux';
+import { GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
 import './Menu.sass';
 
-function Menu({collections}){
+function Menu(){
     const [handle, setHandle] = useState("");
+    const collections = useSelector(state => state.home.customCategories);
     
     const { data: collectionData } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {handle, first: 8}});
     
     const products = collectionData?.collectionByHandle?.products?.edges?.map(({node}) => {
-        const {id, title, priceRange, images} = node;
+        const {id, title, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
             title,
             price: priceRange.minVariantPrice.amount,
+            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
             image: images.edges[0].node.transformedSrc
         }
     }) ?? [];

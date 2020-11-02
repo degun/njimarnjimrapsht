@@ -1,8 +1,12 @@
+@import '../colors.sass'
+
+
 button
     font-family: "SF Pro", sans-serif
     padding: 12px 50px
     font-size: 1.6rem
     font-weight: lighter
+    transition: 0.3s background-color cubic-bezier(.17,.67,.01,.88)
     &.skeleton
         background-color: transparent
         color: white
@@ -11,4 +15,14 @@ button
         box-shadow: none
         &:hover 
             cursor: pointer
-            border-color: mix(transparent, white, 20)
+            background-color: mix(transparent, white, 50)
+    &.primary
+        background-color: $attention-button
+        color: white
+        border: 1px solid $attention-button
+        border-radius: 3px
+        outline: none
+        box-shadow: none
+        padding: 7px 40px
+        &:hover 
+            cursor: pointer

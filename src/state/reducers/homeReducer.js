@@ -1,15 +1,33 @@
-import { SET_TOP_CATEGORY } from '../types';
+import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES } from '../types';
 
 const init = {
-    category: ""
+    customCategories: [],
+    smartCategories: [],
+    tags: [],
+    types: []
 }
 
 function homeReducer(state = init, action) {
     switch(action.type){
-        case SET_TOP_CATEGORY:
+        case SET_CUSTOM_CATEGORIES:
             return {
                 ...state, 
-                category: action.category
+                customCategories: action.customCategories
+            }
+        case SET_SMART_CATEGORIES:
+            return {
+                ...state, 
+                smartCategories: action.smartCategories
+            }
+        case SET_TAGS:
+            return {
+                ...state, 
+                tags: action.tags
+            }
+        case SET_TYPES:
+            return {
+                ...state, 
+                types: action.types
             }
         default:
             return state

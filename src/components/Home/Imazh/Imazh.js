@@ -1,5 +1,5 @@
 import React from 'react';
-import src from '../../../../images/head.png';
+import src from '../../../images/head.png';
 import './Imazh.sass';
 
 function Imazh(){

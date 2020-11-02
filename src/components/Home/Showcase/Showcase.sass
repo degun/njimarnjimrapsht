@@ -26,6 +26,7 @@
             width: calc( 100% - 50px ) 
             margin: 0
             padding-left: 0
+            overflow-x: hidden
             li.collection
                 color: $tertiary
                 padding: 8px 40px
@@ -35,6 +36,8 @@
                 align-items: center
                 height: 100%
                 margin-bottom: 0
+                width: auto
+                white-space: nowrap
                 transition: 0.1s background-color linear, 1.8s color cubic-bezier(.17,.67,.01,.88)
                 &:hover
                     cursor: pointer
@@ -46,6 +49,7 @@
             width: 50px
             display: flex
             justify-content: space-between
+            align-items: center
             svg:hover
                 cursor: pointer
                 
