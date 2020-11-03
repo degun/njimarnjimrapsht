@@ -27,8 +27,8 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/products" component={Shop} />
-        <Route exact path="/products/:handle" component={SingleProduct} />
+        <Route exact path="/produkte" component={Shop} />
+        <Route exact path="/produkte/:handle" component={SingleProduct} />
       </Switch>
     </div>
   );

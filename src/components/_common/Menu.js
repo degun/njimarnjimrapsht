@@ -32,8 +32,8 @@ function Menu(){
                 <div className="link" >
                     {hamburger} Të gjitha kategoritë
                 </div>
-                <Link to="/shop" className="link">Produkte në ofertë</Link>
-                <Link to="/shop" className="link">Të reja</Link>
+                <Link to="/produkte" className="link">Produkte në ofertë</Link>
+                <Link to="/produkte" className="link">Të reja</Link>
                 <Link to="/rrethnesh" className="link">Rreth nesh</Link>
                 <Link to="/blog" className="link">Blog</Link>
             </nav>
