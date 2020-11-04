@@ -7,6 +7,7 @@ export const GET_PRODUCTS = gql`
                 node{
                     id 
                     title
+                    handle
                     description
                     images(first: 1){
                         edges{
@@ -30,6 +31,60 @@ export const GET_PRODUCTS = gql`
                         maxVariantPrice{
                             amount
                           }
+                    }
+                }
+            }
+        }
+    }
+`;
+
+export const GET_PRODUCT = gql`
+    query getProduct($handle: String!){
+        productByHandle(handle: $handle) {
+            id
+            title
+            description
+            images(first: 20){
+                edges{
+                    node{
+                        altText
+                        transformedSrc
+                    }
+                }
+            }
+            variants(first: 10) {
+                edges {
+                    node {
+                        title
+                        image{
+                            transformedSrc
+                        }
+                        availableForSale
+                        currentlyNotInStock
+                        priceV2 {
+                            amount
+                        }
+                        compareAtPriceV2 {
+                            amount
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
+
+export const GET_PRODUCT_RECOMMENDATIONS = gql`
+    query getProductRecommendations($productId: ID!){
+        productRecommendations(productId: $productId) {
+            id
+            title
+            description
+            images(first: 1){
+                edges{
+                    node{
+                        altText
+                        transformedSrc
                     }
                 }
             }
@@ -70,6 +125,7 @@ export const GET_COLLECTION_PRODUCTS = gql`
                     node{
                         id 
                         title
+                        handle
                         images(first: 1){
                             edges{
                                 node{

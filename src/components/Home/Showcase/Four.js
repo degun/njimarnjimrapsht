@@ -9,10 +9,11 @@ function Four({handle, image, description, type}){
     const { data: collectionData } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {handle, first: 4}});
     
     const products = collectionData?.collectionByHandle?.products?.edges?.map(({node}) => {
-        const {id, title, priceRange, compareAtPriceRange, images} = node;
+        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
             title,
+            handle,
             price: priceRange.minVariantPrice.amount,
             compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
             image: images.edges[0].node.transformedSrc

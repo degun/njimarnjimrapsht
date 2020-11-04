@@ -1,5 +1,12 @@
 @import '../colors'
 
+@keyframes appear
+    0%
+        transform: translateX(-10px)
+        opacity: 0
+    100%
+        transform: translateX(0px)
+        opacity: 1
 .Menu
     position: relative
     width: 1366px
@@ -13,6 +20,7 @@
         height: 100%
         align-items: center
         margin-top: 0
+        
         .link
             display: flex
             font-family: "SF Pro", sans-serif
@@ -23,7 +31,7 @@
             height: 100%
             align-items: center
             margin-top: 0
-            transition: 0.1s background-color cubic-bezier(.17,.67,.01,.88)
+            transition: 0.5s background-color cubic-bezier(.17,.67,.01,.88)
             &:hover
                 cursor: pointer
                 background-color: mix(#fff, $secondary, 90)
@@ -32,13 +40,18 @@
                 display: flex
                 padding-left: 0
                 width: 250px
-                background-color: $secondary
-                color: white
                 svg
                     margin-right: 20px
-                    fill: white 
+                    fill: $secondary
                     height: 1.8rem
                     margin-left: 20px
+                    path 
+                        fill: $secondary
+                &.open
+                    background-color: $secondary
+                    color: white
+                    svg path
+                        fill: white 
     .contact
         display: flex
         .contact-item
@@ -66,6 +79,7 @@
         overflow: auto
         transition: 0.3s max-height cubic-bezier(.17,.67,.01,.88)
         background-color: mix(transparent, white, 8)
+        z-index: 1
         li 
             display: flex
             justify-content: space-between
@@ -75,6 +89,9 @@
             padding: 14px 20px
             background-color: $background
             color: $secondary
+            transform: translateX(-10px)
+            opacity: 0
+            animation: 0.2s appear cubic-bezier(.17,.67,.01,.88) forwards
             &:hover
                 cursor: pointer
                 background-color: mix(white, $secondary, 90)

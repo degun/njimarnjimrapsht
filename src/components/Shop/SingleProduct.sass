@@ -1,0 +1,52 @@
+@import '../colors.sass'
+
+.Producto
+    width: 1366px
+    height: 700px
+    margin: 0 auto
+    padding: 40px 0
+    display: flex
+    border-top: 1px solid $border
+    .images
+        width: 55%
+        height: 100%
+        display: flex
+        .images-list
+            box-sizing: content-box
+            width: 80px
+            height: 100%
+            display: flex
+            flex-direction: column
+            margin-right: 10px
+            padding-right: 15px
+            overflow-y: auto
+            overflow-x: hidden
+            img
+                height: 80px
+                width: 80px
+                margin-bottom: 20px
+                border-radius: 3px
+                &:last-child
+                    margin-bottom: 0
+                &:hover
+                    cursor: pointer
+                &.selected
+                    border: 1px solid $secondary
+                    filter: brightness(0.5)
+        img.image
+            width: calc(100% - 105px)
+            height: 100%
+            object-fit: cover
+            border-radius: 3px
+    .information
+        width: 45%
+        height: 100%
+        display: flex
+        flex-direction: column
+        padding-left: 40px
+        h1 
+            font-size: 3rem
+            line-height: 1
+            font-weight: bold
+            color: $secondary
+        
