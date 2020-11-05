@@ -53,21 +53,32 @@
         .variants
             width: 100%
             display: flex
-            margin: 20px 0
+            margin: 40px 0
             align-items: center
             h4 
                 font-family: "SF Pro"
                 font-size: 1.8rem
             .variant
-                padding: 10px 20px
+                padding: 6px 20px
                 border-radius: 3px
-                margin: 0 10px
-                border: 1px solid transparent
+                margin: 0 8px
+                border: 3px solid transparent
                 transition: 0.2s border-color linear
+                font-weight: bold
                 &:hover
                     cursor: pointer
                 &.selected
-                    border: 1px solid mix(white, $secondary, 60)
+                    border: 3px solid $attention
+                    background-color: #fff
+                    color: $attention
+            .buy
+                display: flex
+                justify-content: flex-start
+                .buy-prices
+                    display: inline
+                .button.primary
+                    display: inline
+
 
 
 
