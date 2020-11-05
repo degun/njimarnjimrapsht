@@ -8,14 +8,17 @@ import './Showcase.sass';
 
 function Showcase({title, variant}){
     const [active, setActive] = useState(0);
-    const {tags, types, smartCategories} = useSelector(state => state.home);
+    const {tags, types, smartCategories} = useSelector(state => state.app);
     let categories = [];
     switch(variant){
-        case "best-sellers": categories = smartCategories.map(({title}) => title); break;
+        case "best-sellers": categories = smartCategories?.map(({title}) => title) ?? []; break;
         case "by-tag": categories = tags; break;
         case "by-type": categories = types; break;
         default: categories = []; break;
     }
+
+    if(!categories || !categories.length)return null;
+
     return (
         <section className="Showcase">
             <h2>{title}</h2>

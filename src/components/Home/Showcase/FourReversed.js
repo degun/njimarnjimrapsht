@@ -9,18 +9,17 @@ function FourReversed({type}){
     const { data: productsData } = useQuery(GET_PRODUCTS, {variables: {first: 5, query: `product_type:${type}`}});
 
     const products = productsData?.products?.edges?.map(({node}) => {
-        const {id, title, description, priceRange, compareAtPriceRange, images} = node;
+        const {id, title, handle, description, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
             title,
+            handle,
             description,
             price: priceRange.minVariantPrice.amount,
             compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
             image: images.edges[0].node.transformedSrc
         }
     }) ?? [];
-
-    console.log(products)
 
     const productZero = products.length ? products[0] : {};
     const productOne = products.length > 1 ? products[1] : {};

@@ -1,10 +1,11 @@
-import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES } from '../types';
+import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES, SET_MENU_OPEN } from '../types';
 
 const init = {
     customCategories: [],
     smartCategories: [],
     tags: [],
-    types: []
+    types: [],
+    menuOpen: true
 }
 
 function homeReducer(state = init, action) {
@@ -28,6 +29,11 @@ function homeReducer(state = init, action) {
             return {
                 ...state, 
                 types: action.types
+            }
+        case SET_MENU_OPEN:
+            return {
+                ...state, 
+                menuOpen: action.menuOpen
             }
         default:
             return state

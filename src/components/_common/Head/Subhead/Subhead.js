@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TextField, Icon } from '@shopify/polaris';
 import { SearchMinor, CustomersMinor, HeartMajor, CartMajor } from '@shopify/polaris-icons';
 import { logo } from '../../../icons';
@@ -8,7 +9,7 @@ function Subhead(){
     const quantity = 5;
     return(
         <div className="Subhead">
-            {logo}
+            <Link to="/">{logo}</Link>
             <div className="utilities">
                 <div className="item">
                     <div className="language">

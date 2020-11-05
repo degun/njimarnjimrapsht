@@ -6,7 +6,7 @@ import SingleProduct from './components/Shop/SingleProduct';
 import { GET_CUSTOM_COLLECTIONS, GET_SMART_COLLECTIONS, GET_TAGS, GET_TYPES } from './graphql/queries';
 import { useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
-import { setCustomCategories, setSmartCategories, setTags, setTypes } from './state/actions/homeActions';
+import { setCustomCategories, setSmartCategories, setTags, setTypes } from './state/actions/appActions';
 import './App.sass';
 
 function App() {

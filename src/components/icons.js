@@ -23,7 +23,7 @@ export const logo_white = <svg id="Layer_1" data-name="Layer 1" xmlns="http://ww
         <path id="Path_159" data-name="Path 159" d="M70.452,2.95A2.718,2.718,0,0,1,74.262.245,2.643,2.643,0,0,1,75.85,2.727a2.7,2.7,0,0,1-5.4.223Zm0,24.9V10.718a2.73,2.73,0,0,1,2.73-2.73h0a2.73,2.73,0,0,1,2.73,2.73V27.855a2.73,2.73,0,0,1-2.73,2.73h0a2.73,2.73,0,0,1-2.792-2.73Z" transform="translate(16.965 0.003)" fill="#fff"/>
         <path id="Path_160" data-name="Path 160" d="M97.506,10.2,90.06,27.126A3.115,3.115,0,0,1,87.206,29h0a3.09,3.09,0,0,1-2.854-1.874L77.043,10.237a2.718,2.718,0,0,1,2.482-3.8h0a2.718,2.718,0,0,1,2.482,1.725l5.274,13.426L92.493,8.153A2.68,2.68,0,0,1,94.974,6.44h0a2.68,2.68,0,0,1,2.531,3.76Z" transform="translate(18.514 1.551)" fill="#fff"/>
         <circle id="Ellipse_11" data-name="Ellipse 11" cx="2.842" cy="2.842" r="2.842" transform="translate(52.933 16.454)" fill="#373734"/>
-        <text id="by_Nji_Mar_Nji_Mrapsht" data-name="by Nji Mar Nji Mrapsht" transform="translate(0.009 42.891)" fill="#373734" font-size="11" font-family="SegoeUI, Segoe UI" letter-spacing="-0.06em"><tspan x="0" y="0">b</tspan><tspan y="0" letter-spacing="-0.04em">y Nji </tspan><tspan y="0" letter-spacing="-0.05em">M</tspan><tspan y="0" letter-spacing="-0.04em">a</tspan><tspan y="0" letter-spacing="-0.07em">r </tspan><tspan y="0" letter-spacing="-0.04em">Nji M</tspan><tspan y="0">r</tspan><tspan y="0" letter-spacing="-0.04em">aps</tspan><tspan y="0" letter-spacing="-0.05em">h</tspan><tspan y="0" letter-spacing="-0.04em">t</tspan></text>
+        <text id="by_Nji_Mar_Nji_Mrapsht" data-name="by Nji Mar Nji Mrapsht" transform="translate(0.009 42.891)" fill="#373734" fontSize="11" fontFamily="SegoeUI, Segoe UI" letterSpacing="-0.06em"><tspan x="0" y="0">b</tspan><tspan y="0" letterSpacing="-0.04em">y Nji </tspan><tspan y="0" letterSpacing="-0.05em">M</tspan><tspan y="0" letterSpacing="-0.04em">a</tspan><tspan y="0" letterSpacing="-0.07em">r </tspan><tspan y="0" letterSpacing="-0.04em">Nji M</tspan><tspan y="0">r</tspan><tspan y="0" letterSpacing="-0.04em">aps</tspan><tspan y="0" letterSpacing="-0.05em">h</tspan><tspan y="0" letterSpacing="-0.04em">t</tspan></text>
         <path id="Path_161" data-name="Path 161" d="M21.83,6.15h4.641a.372.372,0,0,1,.261.645l-4.964,4.877a.385.385,0,0,1-.658-.261V6.882a.732.732,0,0,1,.72-.732Z" transform="translate(5.094 1.481)" fill="#373734"/>
         <path id="Path_162" data-name="Path 162" d="M83.583,6.44H87.9a.323.323,0,0,1,.3.447l-2.122,5.5a.36.36,0,0,1-.67,0l-2.122-5.5a.323.323,0,0,1,.3-.447Z" transform="translate(20.066 1.551)" fill="#373734"/>
     </svg>
@@ -149,7 +149,7 @@ export const facebook = <svg xmlns="http://www.w3.org/2000/svg" width="6.951" he
             <rect width="6.951" height="12.857" fill="none"/>
         </clipPath>
         </defs>
-        <g id="facebook-logo" clip-path="url(#clip-path)">
+        <g id="facebook-logo" clipPath="url(#clip-path)">
         <g id="facebook-logo-2" data-name="facebook-logo" opacity="0.5">
             <path id="Path_72" data-name="Path 72" d="M28.766,0,27.1,0a2.928,2.928,0,0,0-3.084,3.164V4.623H22.339a.262.262,0,0,0-.262.262V7a.262.262,0,0,0,.262.262h1.676V12.6a.262.262,0,0,0,.262.262h2.187a.262.262,0,0,0,.262-.262V7.261h1.96A.262.262,0,0,0,28.949,7V4.885a.262.262,0,0,0-.262-.262H26.727V3.386c0-.594.142-.9.916-.9h1.123a.262.262,0,0,0,.262-.262V.265A.262.262,0,0,0,28.766,0Z" transform="translate(-22.077)" fill="#646464"/>
         </g>
@@ -162,7 +162,7 @@ export const twitter = <svg xmlns="http://www.w3.org/2000/svg" width="14.464" he
             <rect width="14.464" height="11.749" fill="none"/>
         </clipPath>
         </defs>
-        <g id="twitter-logo-silhouette" clip-path="url(#clip-path)">
+        <g id="twitter-logo-silhouette" clipPath="url(#clip-path)">
         <g id="twitter-logo-silhouette-2" data-name="twitter-logo-silhouette" transform="translate(0)" opacity="0.5">
             <g id="Group_83" data-name="Group 83">
             <path id="Path_71" data-name="Path 71" d="M14.465,58.831a5.925,5.925,0,0,1-1.7.467,2.98,2.98,0,0,0,1.3-1.64,5.982,5.982,0,0,1-1.885.72,2.97,2.97,0,0,0-5.056,2.705,8.424,8.424,0,0,1-6.115-3.1,2.971,2.971,0,0,0,.918,3.961,2.967,2.967,0,0,1-1.344-.372v.037a2.97,2.97,0,0,0,2.38,2.91,3.006,3.006,0,0,1-.782.1,2.848,2.848,0,0,1-.559-.055,2.969,2.969,0,0,0,2.771,2.061A5.953,5.953,0,0,1,.709,67.9,6.307,6.307,0,0,1,0,67.855,8.387,8.387,0,0,0,4.549,69.19a8.384,8.384,0,0,0,8.442-8.442l-.01-.384A5.925,5.925,0,0,0,14.465,58.831Z" transform="translate(-0.001 -57.441)" fill="#646464"/>
@@ -177,7 +177,7 @@ export const youtube = <svg xmlns="http://www.w3.org/2000/svg" width="14.464" he
             <rect width="14.464" height="9.944" fill="none"/>
         </clipPath>
         </defs>
-        <g id="youtube" clip-path="url(#clip-path)">
+        <g id="youtube" clipPath="url(#clip-path)">
         <g id="youtube-2" data-name="youtube" transform="translate(0 0)" opacity="0.5">
             <g id="Group_81" data-name="Group 81">
             <path id="Path_67" data-name="Path 67" d="M13.85,80.958c-.392-.7-.818-.826-1.685-.875S9.121,80,7.234,80s-4.069.024-4.934.082-1.292.177-1.688.876A8.532,8.532,0,0,0,0,84.969v.007a8.5,8.5,0,0,0,.612,4c.4.7.822.824,1.687.883s3.045.08,4.935.08,4.064-.03,4.931-.08,1.293-.185,1.685-.883a8.447,8.447,0,0,0,.614-4V84.97A8.465,8.465,0,0,0,13.85,80.958ZM5.424,87.684V82.26l4.52,2.712Z" transform="translate(0 -80)" fill="#646464"/>

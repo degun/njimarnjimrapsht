@@ -6,12 +6,13 @@ import { more } from '../../icons';
 import './ByTag.sass';
 
 function ByTag({tag}){
-    const { data } = useQuery(GET_PRODUCTS, {variables: {first: 12, query: `tag:${tag}`}});
+    const { data } = useQuery(GET_PRODUCTS, {variables: {first: 12, query: `tag:${tag}`}, fetchPolicy: "cache-and-network"});
     const products = data?.products?.edges?.map(({node}) => {
-        const {id, title, priceRange, compareAtPriceRange, images} = node;
+        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
             title,
+            handle,
             price: priceRange.minVariantPrice.amount,
             compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
             image: images.edges[0].node.transformedSrc

@@ -5,31 +5,36 @@ import Product from './Product';
 import { hamburger } from '../icons';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMenuOpen } from '../../state/actions/appActions';
 import { GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
 import './Menu.sass';
 
 function Menu(){
+    const dispatch = useDispatch();
     const [handle, setHandle] = useState("");
-    const collections = useSelector(state => state.home.customCategories);
+    const { customCategories, menuOpen } = useSelector(state => state.app);
     
     const { data: collectionData } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {handle, first: 8}});
     
     const products = collectionData?.collectionByHandle?.products?.edges?.map(({node}) => {
-        const {id, title, priceRange, compareAtPriceRange, images} = node;
+        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
             title,
+            handle,
             price: priceRange.minVariantPrice.amount,
             compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
             image: images.edges[0].node.transformedSrc
         }
     }) ?? [];
 
+    const categories = customCategories ?? [];
+
     return(
         <div className="Menu">
             <nav>
-                <div className="link" >
+                <div className={`link ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
                     {hamburger} Të gjitha kategoritë
                 </div>
                 <Link to="/produkte" className="link">Produkte në ofertë</Link>
@@ -46,9 +51,9 @@ function Menu(){
                 </div>
             </div>
             <ul className="collections">
-                {collections.map(({handle, title},i) => <li onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")} key={`collection-${i}`}>{title} <Icon source={ChevronRightMinor} /></li>)}
+                {menuOpen ? categories.map(({handle, title},i) => <li style={{animationDelay: `${i * 0.1}s`}} onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")} key={`collection-${i}`}>{title} <Icon source={ChevronRightMinor} /></li>) : null}
             </ul>
-            {handle ? <div className="products" onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")}>
+            {(handle && menuOpen) ? <div className="products" onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")}>
                {products.map((product, i) => <Product key={product.id} {...product}  i={i} />)}
             </div> : null}
         </div>
