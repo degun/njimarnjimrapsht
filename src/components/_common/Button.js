@@ -1,9 +1,9 @@
 import React from 'react';
 import './Button.sass'
 
-function Button({children, variant}){
+function Button({children, variant, onClick}){
     return(
-        <button className={variant}>{children}</button>
+        <button className={variant} onClick={onClick}>{children}</button>
     )
 }
 

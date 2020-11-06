@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Container from '../_common/Container';
 import Imazh from './Imazh/Imazh';
 import QuickInfo from './QuickInfo/QuickInfo';
 import Vitrine from './Showcase/Showcase';
@@ -16,14 +15,14 @@ function Home() {
     }, []);
 
     return(
-        <Container>
+        <section className="Home">
             <Imazh />
             <QuickInfo />
             <Vitrine title="Produkte të zgjedhura" variant="best-sellers" />
             <Vitrine title="Produkte të tjera" variant="by-tag" />
             <Vitrine title="Produkte sipas llojit" variant="by-type" />
             <BlogPosts />
-        </Container>
+        </section>
     )
  }
 

@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Shop from './components/Shop/Shop';
 import SingleProduct from './components/Shop/SingleProduct';
+import Cart from './components/Cart/Cart';
+import Container from './components/_common/Container';
 import { GET_CUSTOM_COLLECTIONS, GET_SMART_COLLECTIONS, GET_TAGS, GET_TYPES } from './graphql/queries';
 import { useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
@@ -25,11 +27,14 @@ function App() {
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/produkte" component={Shop} />
-        <Route exact path="/produkte/:handle" component={SingleProduct} />
-      </Switch>
+    <Container>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/produkte" component={Shop} />
+          <Route exact path="/produkte/:handle" component={SingleProduct} />
+          <Route exact path="/shporta" component={Cart} />
+        </Switch>
+      </Container>
     </div>
   );
 }

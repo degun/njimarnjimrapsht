@@ -15,12 +15,12 @@
     display: flex
     justify-content: space-between
     overflow: visible
+    border-bottom: 1px solid $border
     nav 
         display: flex
         height: 100%
         align-items: center
         margin-top: 0
-        
         .link
             display: flex
             font-family: "SF Pro", sans-serif
@@ -40,13 +40,16 @@
                 display: flex
                 padding-left: 0
                 width: 250px
+                background-color: mix(white, $secondary, 40)
+                color: $background
+                &:hover
+                    background-color: mix(white, $secondary, 30)
                 svg
                     margin-right: 20px
-                    fill: $secondary
                     height: 1.8rem
                     margin-left: 20px
                     path 
-                        fill: $secondary
+                        fill: $background
                 &.open
                     background-color: $secondary
                     color: white

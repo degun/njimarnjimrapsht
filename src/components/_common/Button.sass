@@ -7,6 +7,8 @@ button
     font-size: 1.6rem
     font-weight: lighter
     transition: 0.3s background-color cubic-bezier(.17,.67,.01,.88)
+    &:hover 
+        cursor: pointer
     &.skeleton
         background-color: transparent
         color: white
@@ -14,15 +16,24 @@ button
         outline: none
         box-shadow: none
         &:hover 
-            cursor: pointer
             background-color: mix(transparent, white, 50)
     &.primary
-        background-color: $attention-button
+        background-color: $attention
         color: white
-        border: 1px solid $attention-button
+        border: 1px solid $attention
         border-radius: 3px
         outline: none
         box-shadow: none
         padding: 7px 40px
         &:hover 
-            cursor: pointer
+            background-color: mix(white, $attention, 10)
+    &.checkout
+        background-color: $secondary
+        color: white
+        border: 1px solid $secondary
+        border-radius: 3px
+        outline: none
+        box-shadow: none
+        padding: 7px 40px
+        &:hover 
+            background-color: mix(white, $secondary, 10)

@@ -1,0 +1,49 @@
+.Cart
+    width: 1366px
+    margin: 0 auto
+    display: flex
+    .line-items
+        width: 60%
+        padding: 40px
+        display: flex
+        flex-direction: column
+        .line-item
+            width: 100%
+            padding: 20px 0
+            display: flex
+            justify-content: space-between
+            align-items: center
+            img 
+                width: 50px
+                margin-right: 50px
+            h2 
+                width: 200px
+                font-weight: bold
+            .price
+                width: 150px
+            input
+                width: 50px
+                text-align: center
+                border: 1px solid #ccc
+                &[type=number]::-webkit-inner-spin-button
+                    opacity: 1
+    .totals
+        width: 40%
+        padding: 40px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        background-color: #f3f3f3
+        h1 
+            font-weight: bold
+            color: #666
+            font-size: 3rem
+        .subtotals
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            height: 80%
+            .row
+                display: flex
+                justify-content: space-between
+            

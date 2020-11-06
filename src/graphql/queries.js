@@ -55,6 +55,7 @@ export const GET_PRODUCT = gql`
             variants(first: 10) {
                 edges {
                     node {
+                        id
                         title
                         image{
                             transformedSrc
@@ -79,6 +80,17 @@ export const GET_PRODUCT_RECOMMENDATIONS = gql`
         productRecommendations(productId: $productId) {
             id
             title
+            handle
+            priceRange{
+                minVariantPrice{
+                    amount
+                }
+            }
+            compareAtPriceRange{
+                minVariantPrice{
+                    amount
+                }
+            }
             description
             images(first: 1){
                 edges{
@@ -174,4 +186,33 @@ export const GET_TYPES = gql`
         }
       }
     }
-`
+`;
+
+export const GET_CHECKOUT = gql`
+    query getCheckout{
+        checkout{
+            id
+            webUrl
+            totalTax
+            subtotalPrice
+            totalPrice
+            lineItems (first: 250) {
+                edges {
+                    node {
+                    id
+                    title
+                    variant {
+                        id
+                        title
+                        image {
+                        src
+                        }
+                        price
+                    }
+                    quantity
+                    }
+                }
+            }
+        }
+    }
+`;

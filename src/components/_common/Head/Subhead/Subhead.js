@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { TextField, Icon } from '@shopify/polaris';
-import { SearchMinor, CustomersMinor, HeartMajor, CartMajor } from '@shopify/polaris-icons';
+import { SearchMinor, CustomersMinor, CartMajor } from '@shopify/polaris-icons';
 import { logo } from '../../../icons';
+import { priced } from '../../../helpers';
 import './Subhead.sass';
 
 function Subhead(){
-    const quantity = 5;
+    const { lineItems, totalPrice } = useSelector(state => state.checkout);
+    const quantity = lineItems.edges?.length ?? 0;
     return(
         <div className="Subhead">
             <Link to="/">{logo}</Link>
@@ -30,22 +33,16 @@ function Subhead(){
                     
                 </div>
                 <div className="item">
-                    <div className="heart-icons">
-                        <Icon source={HeartMajor} />
-                        <div className="quantity">{quantity}</div>
-                    </div>
-                </div>
-                <div className="item">
-                    <div className="cart">
+                    <Link to="/shporta" className="cart">
                         <div className="cart-icons">
                             <Icon source={CartMajor} />
-                            <div className="quantity">0</div>
+                            <div className="quantity">{quantity}</div>
                         </div>
                         <div className="words">
                             <div className="shporta">Shporta</div>
-                            <div className="cmimi">ALL 0.00</div>
+                            <div className="cmimi">{priced(totalPrice)}</div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>
