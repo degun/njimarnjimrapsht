@@ -1,4 +1,4 @@
-import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES, SET_MENU_OPEN } from '../types';
+import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_RECENTLY_VIEWED, SET_MENU_OPEN } from '../types';
 
 export function setCustomCategories(customCategories) {
     return {
@@ -22,10 +22,10 @@ export function setTags(tags) {
     }
 }
 
-export function setTypes(types) {
+export function setRecentlyViewed(recentlyViewed) {
     return {
-        type: SET_TYPES,
-        types
+        type: SET_RECENTLY_VIEWED,
+        recentlyViewed
     }
 }
 

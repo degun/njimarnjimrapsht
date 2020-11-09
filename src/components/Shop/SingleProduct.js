@@ -4,7 +4,7 @@ import Product from '../_common/Product';
 import { withRouter } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMenuOpen } from '../../state/actions/appActions';
+import { setMenuOpen, setRecentlyViewed } from '../../state/actions/appActions';
 import { setCheckoutValues } from '../../state/actions/checkoutActions';
 import { GET_PRODUCT, GET_PRODUCT_RECOMMENDATIONS } from '../../graphql/queries';
 import { CHECKOUT_CREATE, ADD_LINE_ITEM } from '../../graphql/mutations';
@@ -13,8 +13,8 @@ import './SingleProduct.sass';
 
 function SingleProduct({match}){
     const dispatch = useDispatch();
-    const { id: checkoutId, lineItems } = useSelector(state => state.checkout);
-    console.log(lineItems)
+    const { recentlyViewed } = useSelector(state => state.app);
+    const { id: checkoutId } = useSelector(state => state.checkout);
     const { handle } = match.params;
     const [ selectedImage, setSelectedImage ] = useState(0);
     const [ selectedVariant, setSelectedVariant ] = useState(0);
@@ -23,7 +23,9 @@ function SingleProduct({match}){
     const { data: productData } = useQuery(GET_PRODUCT, {variables: {handle}});
     const { id: productId, title, description, images: imgs, variants } = productData?.productByHandle ?? {};
     const { data: recommendationsData } = useQuery(GET_PRODUCT_RECOMMENDATIONS, {variables: {productId}});
-    const images = imgs?.edges?.map(({node}) => node.transformedSrc) ?? [];
+    const images = imgs?.edges?.map(({node}) => node.transformedSrc) ?? [];  
+    const rvIds = recentlyViewed.map(({handle}) => handle);
+
 
     const products = recommendationsData?.productRecommendations?.map(({id, title, handle, priceRange, compareAtPriceRange, images}) => {
         return {
@@ -57,10 +59,17 @@ function SingleProduct({match}){
     }
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0,0);
         dispatch(setMenuOpen(false));
-        setSelectedImage(0)
-    }, [handle])
+        setSelectedImage(0);
+        if(!(rvIds.includes(handle)) && productData?.productByHandle){
+            let recentlyViewedCopy = Array.from(recentlyViewed);
+            recentlyViewedCopy.unshift({...productData.productByHandle, handle});
+            const r = recentlyViewedCopy.filter((_, i) => i < 4);
+            dispatch(setRecentlyViewed(r))
+        }
+        
+    }, [handle, productData])
 
     useEffect(() => {
         if(!checkoutId && checkoutCreated.data && !checkoutCreated.loading && checkoutCreated.called){

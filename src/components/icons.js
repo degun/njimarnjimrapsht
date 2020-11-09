@@ -196,6 +196,20 @@ export const wifi = <svg xmlns="http://www.w3.org/2000/svg" width="11.25" height
         </g>
     </svg>
 
+export const bullet_arrow = <svg xmlns="http://www.w3.org/2000/svg" width="6.75" height="12" viewBox="0 0 6.75 12">
+    <defs>
+    <clipPath id="clip-path">
+        <rect width="6.75" height="12" fill="none"/>
+    </clipPath>
+    </defs>
+    <g id="sort-down" clip-path="url(#clip-path)">
+    <g id="sort-down-2" data-name="sort-down" transform="translate(-63.953 12) rotate(-90)">
+        <path id="Path_73" data-name="Path 73" d="M11.777,64.176a.72.72,0,0,0-.527-.223H.75a.721.721,0,0,0-.527.223.736.736,0,0,0,0,1.055l5.25,5.25a.736.736,0,0,0,1.055,0l5.25-5.25a.736.736,0,0,0,0-1.055Z" fill="#646464"/>
+    </g>
+    </g>
+</svg>
+
+
 
 
 
