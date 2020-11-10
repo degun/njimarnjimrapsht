@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import Products from './components/Products/Products';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import Cart from './components/Cart/Cart';
+import About from './components/About/About';
 import Container from './components/_common/Container';
 import { GET_CUSTOM_COLLECTIONS, GET_SMART_COLLECTIONS, GET_TAGS, GET_TYPES } from './graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/produkte" component={Products} />
           <Route exact path="/produkte/:handle" component={SingleProduct} />
           <Route exact path="/shporta" component={Cart} />
+          <Route exact path="/rrethnesh" component={About} />
         </Switch>
       </Container>
     </div>
