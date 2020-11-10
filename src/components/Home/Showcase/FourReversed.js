@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../_common/Button';
 import Product from '../../_common/Product';
 import { useQuery } from '@apollo/client';
@@ -30,10 +31,10 @@ function FourReversed({type}){
             <div className="advertised" style={{backgroundImage: `url(${productZero.image})`}}>
                 <div className="overlay"></div>
                 <h1>{productZero.description}</h1>
-                <Button variant="skeleton">Bli tani</Button>
+                <Link to={`/produkte/${productZero.handle}`}><Button variant="skeleton">Bli tani</Button></Link>
             </div>
             <div className="four">
-                <div className="one" style={{backgroundImage: products.length ? `url("${productOne.image}")` : undefined}}>
+                <Link to={`/produkte/${productOne.handle}`} className="one" style={{backgroundImage: products.length ? `url("${productOne.image}")` : undefined}}>
                     {products.length > 1 ? <div className="info">
                         <div className="title">{productOne.title}</div>
                         <div className="prices">
@@ -41,7 +42,7 @@ function FourReversed({type}){
                             {productOne.compareAtPrice !== "0.0" ? <span className="compare">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(productOne.compareAtPrice)}</span> : null}
                         </div>
                     </div> : null}
-                </div>
+                </Link>
                 <div className="three" style={{justifyContent: threeProducts.length === 3 ? "space-between" : "flex-start"}}>
                     {threeProducts.map((product, i) => <Product key={product.id} {...product} i={i} />)}
                 </div>

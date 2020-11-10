@@ -1,3 +1,5 @@
+@import '../colors.sass'
+
 .Cart
     width: 1366px
     margin: 0 auto
@@ -32,14 +34,23 @@
                 &[type=number]::-webkit-inner-spin-button
                     opacity: 1
             .close
-                width: 100px
+                width: 30px
+                height: 30px
+                border-radius: 3px
                 text-align: right
                 color: #666
+                font-size: 1.8rem
+                background-color: #f5f5f5
+                display: flex
+                justify-content: center
+                align-items: center
                 font-family: "SF Pro", sans-serif
+                margin-right: -7px
+                margin-top: -7px
                 &:hover
                     cursor: pointer
-                    color: #000
-                    font-weight: bold
+                    color: $attention
+                    background-color: mix(white, $attention, 90)
     .totals
         width: 40%
         padding: 40px
@@ -64,5 +75,6 @@
         .checkout-button
             display: flex
             justify-content: flex-end
+            text-decoration: none
                 
             

@@ -1,9 +1,14 @@
 import gql from 'graphql-tag';
 
 export const GET_PRODUCTS = gql`
-    query getProducts($first: Int $query: String){
-        products(first: $first query: $query){
+    query getProducts($first: Int $query: String $after: String){
+        products(first: $first after: $after query: $query){
+            pageInfo { 
+                hasNextPage
+                hasPreviousPage
+            }
             edges{
+                cursor
                 node{
                     id 
                     title
@@ -129,11 +134,16 @@ export const GET_CUSTOM_COLLECTIONS = gql`
 `;
 
 export const GET_COLLECTION_PRODUCTS = gql`
-    query getCollectionProducts($handle: String! $first: Int!){
+    query getCollectionProducts($handle: String! $first: Int! $after: String){
         collectionByHandle(handle: $handle){
             image{transformedSrc}
-            products(first: $first){
+            products(first: $first after: $after){
+                pageInfo { 
+                    hasNextPage
+                    hasPreviousPage
+                }
                 edges{
+                    cursor
                     node{
                         id 
                         title

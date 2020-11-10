@@ -1,0 +1,163 @@
+@import '../colors.sass'
+.SingleProduct
+    width: 1366px
+    margin: 0 auto
+    .Producto
+        width: 100%
+        height: 780px
+        padding: 80px 0
+        display: flex
+        background-color: $background
+        .images
+            width: 55%
+            height: 100%
+            display: flex
+            .images-list
+                box-sizing: content-box
+                width: 80px
+                height: 100%
+                display: flex
+                flex-direction: column
+                margin-right: 10px
+                padding-right: 15px
+                overflow-y: auto
+                overflow-x: hidden
+                img
+                    height: 80px
+                    width: 80px
+                    margin-bottom: 20px
+                    border-radius: 3px
+                    &:last-child
+                        margin-bottom: 0
+                    &:hover
+                        cursor: pointer
+                    &.selected
+                        border: 1px solid $secondary
+                        filter: brightness(0.5)
+            img.image
+                width: calc(100% - 105px)
+                height: 100%
+                object-fit: cover
+                border-radius: 3px
+        .information
+            width: 45%
+            height: 100%
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            padding-left: 40px
+            h1 
+                font-size: 3rem
+                line-height: 1
+                font-weight: bold
+                font-family: "SF Pro"
+                color: $secondary
+                margin-bottom: 40px
+            .variants
+                width: 100%
+                display: flex
+                margin-bottom: 40px
+                align-items: center
+                h4 
+                    font-family: "SF Pro"
+                    font-size: 1.8rem
+                .variant
+                    padding: 6px 20px
+                    border-radius: 3px
+                    margin: 0 8px
+                    border: 3px solid transparent
+                    transition: 0.2s border-color linear
+                    font-weight: bold
+                    &:hover
+                        cursor: pointer
+                    &.selected
+                        border: 3px solid $attention
+                        background-color: #fff
+                        color: $attention
+            .buy
+                width: 80%
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                align-items: flex-start
+                padding: 0
+                border-radius: 3px
+                .buy-prices
+                    font-family: "SF Pro", sans-serif
+                    font-size: 4rem
+                    font-weight: bold
+                    .compare
+                        color: #999
+                        text-decoration: line-through
+                        font-size: 3rem
+                        margin-left: 10px
+                        font-weight: normal
+                button.primary
+                    margin-top: 40px
+    .product-description
+        width: 100%
+        height: auto
+        margin: 40px 0
+        display: flex
+        flex-direction: column
+        background-color: $background
+        .categories
+            width: 100%
+            height: auto
+            display: flex
+            justify-content: space-between
+            border-bottom: 4px solid $secondary
+            padding-bottom: 0
+            margin-bottom: 0
+            ul.list
+                display: flex
+                width: calc( 100% - 50px ) 
+                margin: 0
+                padding-left: 0
+                overflow-x: hidden
+                background-color: $background
+                li
+                    background-color: $secondary
+                    color: $background
+                    padding: 8px 40px
+                    font-size: 1.5rem
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    height: 100%
+                    margin-bottom: 0
+                    width: auto
+                    white-space: nowrap
+                    transition: 0.1s background-color linear, 1.8s color cubic-bezier(.17,.67,.01,.88)
+        .description
+            margin-top: 20px
+            width: 100%
+            background-color: $background
+            font-size: 2rem
+            font-family: "SF Pro", sans-serif
+
+    .recommended-products
+        width: 100%
+        height: auto
+        margin: 80px 0
+        display: flex
+        flex-direction: column
+        background-color: $background
+        h2 
+            font-size: 3rem
+            margin-bottom: 40px
+        .products
+            width: 100%
+            background-color: white
+            display: grid
+            grid-template-columns: repeat(auto-fill,minmax(200px, 1fr))
+            .Product
+                margin-bottom: 20px
+                padding: 20px
+
+
+
+
+
+
+        

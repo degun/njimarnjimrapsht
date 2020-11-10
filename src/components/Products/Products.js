@@ -11,15 +11,16 @@ import './Products.sass';
 
 function Products(){
     const dispatch = useDispatch();
+    const [ cursors, setCursors ] = useState([]);
     const { customCategories, smartCategories, tags, recentlyViewed } = useSelector(state => state.app);
     const { selectedCategory, selectedTags } = useSelector(state => state.products);
     const { handle, title } = selectedCategory;
-    const { data: gotProducts } = useQuery(GET_PRODUCTS, {variables: {first: 16, query: selectedTags.length ? `tag:${selectedTags.join(" OR ")}` : undefined}});
-    const { data: gotCollectionProducts } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {first: 16, handle}});
+    const { data: gotProducts, loading: productsLoading } = useQuery(GET_PRODUCTS, {variables: {first: 16, after: cursors[0], query: selectedTags.length ? `tag:${selectedTags.join(" OR ")}` : undefined}});
+    const { data: gotCollectionProducts, loading: collectionProductsLoading } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {first: 16, after: cursors[0], handle}});
     const [expandedCollections, setExpandedCollections] = useState(true);
     const [expandedTags, setExpandedTags] = useState(true);
 
-    const products = gotProducts?.products?.edges?.map(({node}) => {
+    const products = gotProducts?.products?.edges?.map(({node, cursor}) => {
         const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
@@ -27,11 +28,12 @@ function Products(){
             handle,
             price: priceRange.minVariantPrice.amount,
             compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc
+            image: images.edges[0].node.transformedSrc,
+            cursor
         }
     }) ?? [];
 
-    const collectionProducts = gotCollectionProducts?.collectionByHandle?.products?.edges?.map(({node}) => {
+    const collectionProducts = gotCollectionProducts?.collectionByHandle?.products?.edges?.map(({node, cursor}) => {
         const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
         return {
             id, 
@@ -39,7 +41,8 @@ function Products(){
             handle,
             price: priceRange.minVariantPrice.amount,
             compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc
+            image: images.edges[0].node.transformedSrc,
+            cursor
         }
     }) ?? [];
 
@@ -57,11 +60,30 @@ function Products(){
     }) ?? [];
 
     const productsToShow = selectedCategory.handle ? collectionProducts : products;
+    const hasNextPage = selectedCategory.handle ? gotCollectionProducts?.collectionByHandle?.products?.pageInfo?.hasNextPage : gotProducts?.products?.pageInfo?.hasNextPage
+    const hasPreviousPage = selectedCategory.handle ? gotCollectionProducts?.collectionByHandle?.products?.pageInfo?.hasPreviousPage : gotProducts?.products?.pageInfo?.hasPreviousPage
+    const loading = selectedCategory.handle ? collectionProductsLoading : productsLoading;
 
     useEffect(() => {
         window.scrollTo(0,0)
         dispatch(setMenuOpen(false));
     }, [handle])
+
+    function goForward(){
+        if(hasNextPage){
+            let c = Array.from(cursors);
+            c.unshift(productsToShow[productsToShow.length - 1].cursor);
+            setCursors(c);
+        }
+    }
+
+    function goBack(){
+        if(hasPreviousPage){
+            let c = Array.from(cursors);
+            c.shift();
+            setCursors(c);
+        }
+    }
 
     return (
         <section className="Products">
@@ -84,21 +106,27 @@ function Products(){
                     </ul>
                 </aside>
                 <main>
-                    <div className="sorters">
+                    {productsToShow .length ? <div className="sorters">
                         <div className="icons"></div>
-                        <Select 
+                        {/* <Select 
                             
-                        />
-                    </div>
-                    <div className="products">
+                        /> */}
+                    </div> : null}
+                    {productsToShow .length ? <div className="products">
                         {productsToShow.map((product, i) => <Product key={product.id} {...product} i={i} />)}
-                    </div>
-                    <div className="recent">
+                    </div> : null}
+
+                    {productsToShow .length ? <div className="pagination">
+                        <div onClick={goBack} className={`arrow ${hasPreviousPage ? "active" : ""}`}><span>&larr;</span> Përpara</div>
+                        <div onClick={goForward} className={`arrow ${hasNextPage ? "active" : ""}`}>Pas <span>&rarr;</span></div>
+                    </div> : null}
+
+                    {loading ? null : <div className="recent">
                         <h1>Të shikuara së fundmi</h1>
-                    </div>
-                    <div className="products recently-viewed">
-                        {recentlyViewedProducts.map((product, i) => <Product key={product.id} {...product} i={i} />)}
-                    </div>
+                        <div className="products recently-viewed">
+                            {recentlyViewedProducts.map((product, i) => <Product key={product.id} {...product} i={i} />)}
+                        </div>
+                    </div>}
                 </main>
             </div>
         </section>

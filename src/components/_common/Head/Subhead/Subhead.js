@@ -1,26 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCTS } from '../../../../graphql/queries';
 import { TextField, Icon } from '@shopify/polaris';
 import { SearchMinor, CustomersMinor, CartMajor } from '@shopify/polaris-icons';
+import SearchProduct from './SearchProduct';
 import { logo } from '../../../icons';
 import { priced } from '../../../helpers';
 import './Subhead.sass';
 
 function Subhead(){
+    const [ search, setSearch ] = useState("");
+    const [ open, setOpen ] = useState(false);
     const { lineItems, totalPrice } = useSelector(state => state.checkout);
     const quantity = lineItems.edges?.length ?? 0;
+    const { data } = useQuery(GET_PRODUCTS, {variables: {first: 10, query: search ? search : ".........."}});
+
+    const products = data?.products?.edges?.map(({node, cursor}) => {
+        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
+        return {
+            id, 
+            title,
+            handle,
+            price: priceRange.minVariantPrice.amount,
+            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
+            image: images.edges[0].node.transformedSrc,
+            cursor
+        }
+    }) ?? [];
+
+    function onBlur(){
+        setTimeout(() => {
+            setOpen(false)
+        }, 300);
+    }
+
     return(
         <div className="Subhead">
-            <Link to="/">{logo}</Link>
+            <div className="logospace">
+                <Link to="/">{logo}</Link>
+                <div className="language">
+                    <span>EN</span>/<strong className="selected">AL</strong>
+                </div>
+            </div>
             <div className="utilities">
                 <div className="item">
-                    <div className="language">
-                        <span>EN</span>/<strong className="selected">AL</strong>
+                    <TextField value={search} onFocus={() => setOpen(true)} onBlur={onBlur} onChange={s => setSearch(s)} placeholder="Kërko këtu" prefix={<Icon source={SearchMinor} />} />
+                    <div className={`searched-products ${open && products.length ? "open" : ""}`}>
+                        {products.map((product, i) => <SearchProduct onClick={() => setSearch("")} key={product.id} {...product}  i={i} />)}
                     </div>
-                </div>
-                <div className="item">
-                    <TextField placeholder="Kërko këtu" prefix={<Icon source={SearchMinor} />} />
                 </div>
                 <div className="item">
                     <div className="kontakto">Na kontakto këtu nëse<br /> je artizan shqiptar</div>

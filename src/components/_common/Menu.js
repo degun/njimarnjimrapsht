@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useSelector, useDispatch } from 'react-redux';
 import { setMenuOpen } from '../../state/actions/appActions';
+import { setSelectedCategory } from '../../state/actions/productsActions';
 import { GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
 import './Menu.sass';
 
 function Menu(){
     const dispatch = useDispatch();
     const [handle, setHandle] = useState("");
-    const { customCategories, menuOpen } = useSelector(state => state.app);
-    
+    const { customCategories, smartCategories, menuOpen } = useSelector(state => state.app);
     const { data: collectionData } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {handle, first: 8}});
     
     const products = collectionData?.collectionByHandle?.products?.edges?.map(({node}) => {
@@ -37,8 +37,7 @@ function Menu(){
                 <div className={`link ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
                     {hamburger} Të gjitha kategoritë
                 </div>
-                <Link to="/produkte" className="link">Produkte në ofertë</Link>
-                <Link to="/produkte" className="link">Të reja</Link>
+                {smartCategories.map(({handle, title}) => <Link to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
                 <Link to="/rrethnesh" className="link">Rreth nesh</Link>
                 <Link to="/blog" className="link">Blog</Link>
             </nav>
@@ -51,7 +50,7 @@ function Menu(){
                 </div>
             </div>
             <ul className="collections">
-                {menuOpen ? categories.map(({handle, title},i) => <li style={{animationDelay: `${i * 0.1}s`}} onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")} key={`collection-${i}`}>{title} <Icon source={ChevronRightMinor} /></li>) : null}
+                {menuOpen ? categories.map(({handle, title},i) => <li onClick={() => dispatch(setSelectedCategory({handle, title}))} style={{animationDelay: `${i * 0.1}s`}} onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")} key={`collection-${i}`}>{title} <Icon source={ChevronRightMinor} /></li>) : null}
             </ul>
             {(handle && menuOpen) ? <div className="products" onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")}>
                {products.map((product, i) => <Product key={product.id} {...product}  i={i} />)}
