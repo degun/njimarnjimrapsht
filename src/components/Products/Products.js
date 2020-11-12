@@ -17,8 +17,8 @@ function Products(){
     const { handle, title } = selectedCategory;
     const { data: gotProducts, loading: productsLoading } = useQuery(GET_PRODUCTS, {variables: {first: 16, after: cursors[0], query: selectedTags.length ? `tag:${selectedTags.join(" OR ")}` : undefined}});
     const { data: gotCollectionProducts, loading: collectionProductsLoading } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {first: 16, after: cursors[0], handle}});
-    const [expandedCollections, setExpandedCollections] = useState(true);
-    const [expandedTags, setExpandedTags] = useState(true);
+    const [ expandedCollections, setExpandedCollections ] = useState(true);
+    const [ expandedTags, setExpandedTags ] = useState(true);
 
     const products = gotProducts?.products?.edges?.map(({node, cursor}) => {
         const {id, title, handle, priceRange, compareAtPriceRange, images} = node;

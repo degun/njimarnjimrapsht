@@ -41,7 +41,7 @@ function Subhead(){
             <div className="logospace">
                 <Link to="/">{logo}</Link>
                 <div className="language">
-                    <span>EN</span>/<strong className="selected">AL</strong>
+                    <span>EN</span> / <strong className="selected">AL</strong>
                 </div>
             </div>
             <div className="utilities">
