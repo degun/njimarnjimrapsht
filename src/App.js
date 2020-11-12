@@ -6,6 +6,8 @@ import SingleProduct from './components/SingleProduct/SingleProduct';
 import Cart from './components/Cart/Cart';
 import About from './components/About/About';
 import Container from './components/_common/Container';
+import Register from './components/_common/Auth/Register';
+import Login from './components/_common/Auth/Login';
 import { GET_CUSTOM_COLLECTIONS, GET_SMART_COLLECTIONS, GET_TAGS, GET_TYPES } from './graphql/queries';
 import { useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
@@ -37,6 +39,8 @@ function App() {
           <Route exact path="/rrethnesh" component={About} />
         </Switch>
       </Container>
+      <Register />
+      <Login />
     </div>
   );
 }

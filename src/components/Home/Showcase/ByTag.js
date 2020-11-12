@@ -6,22 +6,13 @@ import { setSelectedTags } from '../../../state/actions/productsActions';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../graphql/queries';
 import { more } from '../../icons';
+import { transformProducts } from '../../helpers';
 import './ByTag.sass';
 
 function ByTag({tag}){
     const dispatch = useDispatch();
     const { data } = useQuery(GET_PRODUCTS, {variables: {first: 12, query: `tag:${tag}`}, fetchPolicy: "cache-and-network"});
-    const products = data?.products?.edges?.map(({node}) => {
-        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
-        return {
-            id, 
-            title,
-            handle,
-            price: priceRange.minVariantPrice.amount,
-            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc
-        }
-    }) ?? [];
+    const products = transformProducts(data?.products?.edges ?? [])
  
     return(
         <React.Fragment>

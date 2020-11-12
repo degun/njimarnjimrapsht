@@ -4,23 +4,13 @@ import Button from '../../_common/Button';
 import Product from '../../_common/Product';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../graphql/queries';
+import { transformProducts } from '../../helpers';
 import './Four.sass';
 
 function FourReversed({type}){
     const { data: productsData } = useQuery(GET_PRODUCTS, {variables: {first: 5, query: `product_type:${type}`}});
 
-    const products = productsData?.products?.edges?.map(({node}) => {
-        const {id, title, handle, description, priceRange, compareAtPriceRange, images} = node;
-        return {
-            id, 
-            title,
-            handle,
-            description,
-            price: priceRange.minVariantPrice.amount,
-            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc
-        }
-    }) ?? [];
+    const products = transformProducts(productsData?.products?.edges ?? [])
 
     const productZero = products.length ? products[0] : {};
     const productOne = products.length > 1 ? products[1] : {};
@@ -30,7 +20,7 @@ function FourReversed({type}){
         <div className="Four reversed">
             <div className="advertised" style={{backgroundImage: `url(${productZero.image})`}}>
                 <div className="overlay"></div>
-                <h1>{productZero.description}</h1>
+                <h1>{productZero.title}</h1>
                 <Link to={`/produkte/${productZero.handle}`}><Button variant="skeleton">Bli tani</Button></Link>
             </div>
             <div className="four">

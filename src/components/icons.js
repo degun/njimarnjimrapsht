@@ -128,6 +128,18 @@ export const mail_white = <svg xmlns="http://www.w3.org/2000/svg" width="14" hei
     </g>
 </svg>
 
+export const mail_brown = <svg id="Monotone" xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12">
+    <defs>
+    <clipPath id="clip-path">
+        <path id="Icon" d="M14.25,12H.75A.751.751,0,0,1,0,11.25V.75A.751.751,0,0,1,.75,0h13.5A.751.751,0,0,1,15,.75v10.5A.751.751,0,0,1,14.25,12ZM1.5,2.56V10.5h12V2.56L8.03,8.03a.75.75,0,0,1-1.06,0ZM2.56,1.5,7.5,6.44,12.44,1.5Z" transform="translate(0 0)" fill="#573843"/>
+    </clipPath>
+    </defs>
+    <g id="Group_58" data-name="Group 58" transform="translate(0 0)">
+    <path id="Icon-2" data-name="Icon" d="M14.25,12H.75A.751.751,0,0,1,0,11.25V.75A.751.751,0,0,1,.75,0h13.5A.751.751,0,0,1,15,.75v10.5A.751.751,0,0,1,14.25,12ZM1.5,2.56V10.5h12V2.56L8.03,8.03a.75.75,0,0,1-1.06,0ZM2.56,1.5,7.5,6.44,12.44,1.5Z" transform="translate(0 0)" fill="#573843"/>
+    </g>
+</svg>
+
+
 export const location_white = <svg xmlns="http://www.w3.org/2000/svg" width="11.211" height="14" viewBox="0 0 11.211 14">
     <g id="pin" opacity="0.8">
     <g id="Group_4" data-name="Group 4" transform="translate(2.187 2.188)">

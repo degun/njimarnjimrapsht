@@ -21,13 +21,18 @@
         border-bottom: 4px solid $tertiary
         padding-bottom: 0
         margin-bottom: 0
-        ul.list
+        overflow: hidden
+        position: relative
+        .list
             display: flex
-            width: calc( 100% - 50px ) 
+            width: auto
             margin: 0
             padding-left: 0
             overflow-x: hidden
-            li.collection
+            .scroll-menu-arrow
+                padding: 20px
+                cursor: pointer
+            .collection
                 color: $tertiary
                 padding: 8px 40px
                 font-size: 1.5rem
@@ -42,9 +47,15 @@
                 &:hover
                     cursor: pointer
                     background-color: mix(#fff, $tertiary, 95)
+                &:focus
+                    border: none
+                    outline: none
                 &.selected
                     background-color: $tertiary
                     color: $background
+            .menu-wrapper--inner
+                width: 5% !important
+                white-space: nowrap
         .arrows
             width: 50px
             display: flex
@@ -52,4 +63,3 @@
             align-items: center
             svg:hover
                 cursor: pointer
-                

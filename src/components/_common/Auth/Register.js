@@ -1,34 +1,37 @@
 import React from 'react';
 import { Modal, TextContainer } from '@shopify/polaris';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRegistering, setLoggingIn } from '../../../state/actions/appActions';
 
 function Register(){
-    function handleChange(){}
-    function activator(){}
-    const active = true;
+    const dispatch = useDispatch();
+    const { registering } = useSelector(state => state.app);
+    function switchToLogin(){
+        dispatch(setRegistering(false))
+        dispatch(setLoggingIn(true))
+    }
     return (
         <Modal
-            activator={activator}
-            open={active}
-            onClose={handleChange}
+            open={registering}
+            onClose={() => dispatch(setRegistering(false))}
             title="Regjistrohuni në dyqanin tonë online!"
             primaryAction={{
                 content: 'Add Instagram',
-                onAction: handleChange,
+                onAction: null,
             }}
             secondaryActions={[
             {
                 content: 'Learn more',
-                onAction: handleChange,
+                onAction: null,
             },
             ]}
         >
             <Modal.Section>
             <TextContainer>
                 <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
+                    Register.
                 </p>
+                or <strong onClick={switchToLogin}>Log in</strong>
             </TextContainer>
             </Modal.Section>
         </Modal>

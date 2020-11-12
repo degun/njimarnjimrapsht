@@ -17,6 +17,7 @@ export const GET_PRODUCTS = gql`
                     images(first: 1){
                         edges{
                             node{
+                                id
                                 transformedSrc
                             }
                         }
@@ -52,6 +53,7 @@ export const GET_PRODUCT = gql`
             images(first: 20){
                 edges{
                     node{
+                        id
                         altText
                         transformedSrc
                     }
@@ -100,6 +102,7 @@ export const GET_PRODUCT_RECOMMENDATIONS = gql`
             images(first: 1){
                 edges{
                     node{
+                        id
                         altText
                         transformedSrc
                     }
@@ -114,7 +117,7 @@ export const GET_SMART_COLLECTIONS = gql`
         collections(first: 100 query: "collection_type:smart"){
             edges{
                 node{
-                    title handle image{transformedSrc} description
+                    id title handle image{transformedSrc} description
                 }
             }
         }
@@ -126,7 +129,7 @@ export const GET_CUSTOM_COLLECTIONS = gql`
         collections(first: 100 query: "collection_type:custom"){
             edges{
                 node{
-                    title handle
+                    id title handle
                 }
             }
         }
@@ -151,6 +154,7 @@ export const GET_COLLECTION_PRODUCTS = gql`
                         images(first: 1){
                             edges{
                                 node{
+                                    id
                                     transformedSrc
                                 }
                             }

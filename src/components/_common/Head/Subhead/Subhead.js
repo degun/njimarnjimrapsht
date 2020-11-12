@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLoggingIn, setRegistering } from '../../../../state/actions/appActions';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../../graphql/queries';
 import { TextField, Icon } from '@shopify/polaris';
@@ -11,6 +12,7 @@ import { priced } from '../../../helpers';
 import './Subhead.sass';
 
 function Subhead(){
+    const dispatch = useDispatch();
     const [ search, setSearch ] = useState("");
     const [ open, setOpen ] = useState(false);
     const { lineItems, totalPrice } = useSelector(state => state.checkout);
@@ -56,8 +58,8 @@ function Subhead(){
                 </div>
                 <div className="item">
                     <div className="hyr">
-                        <button><Icon source={CustomersMinor} /> Hyr</button>
-                        <div className="register">apo <strong><a href="/">Regjistrohu tani!</a></strong></div>
+                        <button onClick={() => dispatch(setLoggingIn(true))}><Icon source={CustomersMinor} /> Hyr</button>
+                        <div className="register">apo <strong><span onClick={() => dispatch(setRegistering(true))}>Regjistrohu tani!</span></strong></div>
                     </div>
                     
                 </div>

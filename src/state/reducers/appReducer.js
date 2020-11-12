@@ -1,4 +1,4 @@
-import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES, SET_RECENTLY_VIEWED, SET_MENU_OPEN } from '../types';
+import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES, SET_RECENTLY_VIEWED, SET_MENU_OPEN, SET_REGISTERING, SET_LOGGING_IN } from '../types';
 
 const init = {
     customCategories: [],
@@ -6,7 +6,9 @@ const init = {
     tags: [],
     types: [],
     recentlyViewed: [],
-    menuOpen: true
+    menuOpen: true,
+    registering: false,
+    loggingIn: false
 }
 
 function homeReducer(state = init, action) {
@@ -40,6 +42,16 @@ function homeReducer(state = init, action) {
             return {
                 ...state, 
                 menuOpen: action.menuOpen
+            }
+        case SET_REGISTERING:
+            return {
+                ...state, 
+                registering: action.registering
+            }
+        case SET_LOGGING_IN:
+            return {
+                ...state, 
+                loggingIn: action.loggingIn
             }
         default:
             return state

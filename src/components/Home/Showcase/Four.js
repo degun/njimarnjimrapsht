@@ -6,23 +6,14 @@ import { useDispatch } from 'react-redux';
 import { setSelectedCategory } from '../../../state/actions/productsActions';
 import { useQuery } from '@apollo/client';
 import { GET_COLLECTION_PRODUCTS } from '../../../graphql/queries';
+import { transformProducts } from '../../helpers';
 import './Four.sass';
 
 function Four({title, handle, image, description}){
     const dispatch = useDispatch();
     const { data: collectionData } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {handle, first: 4}});
     
-    const products = collectionData?.collectionByHandle?.products?.edges?.map(({node}) => {
-        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
-        return {
-            id, 
-            title,
-            handle,
-            price: priceRange.minVariantPrice.amount,
-            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc
-        }
-    }) ?? [];
+    const products = transformProducts(collectionData?.collectionByHandle?.products?.edges ?? []);
     const productOne = products.length ? products[0] : {};
     const threeProducts = products.length > 1 ? products.slice(1) : [];
 

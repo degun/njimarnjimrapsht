@@ -7,6 +7,7 @@ import { setMenuOpen } from '../../state/actions/appActions';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS, GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
 import { bullet_arrow } from '../icons';
+import { transformProducts } from '../helpers';
 import './Products.sass';
 
 function Products(){
@@ -20,31 +21,9 @@ function Products(){
     const [ expandedCollections, setExpandedCollections ] = useState(true);
     const [ expandedTags, setExpandedTags ] = useState(true);
 
-    const products = gotProducts?.products?.edges?.map(({node, cursor}) => {
-        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
-        return {
-            id, 
-            title,
-            handle,
-            price: priceRange.minVariantPrice.amount,
-            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc,
-            cursor
-        }
-    }) ?? [];
+    const products = transformProducts(gotProducts?.products?.edges ?? []);
 
-    const collectionProducts = gotCollectionProducts?.collectionByHandle?.products?.edges?.map(({node, cursor}) => {
-        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
-        return {
-            id, 
-            title,
-            handle,
-            price: priceRange.minVariantPrice.amount,
-            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc,
-            cursor
-        }
-    }) ?? [];
+    const collectionProducts = transformProducts(gotCollectionProducts?.collectionByHandle?.products?.edges ?? []);
 
     const recentlyViewedProducts = recentlyViewed?.map(({ id, title, handle, images, variants }) => {
         const price = variants.edges[0]?.node?.priceV2?.amount ?? 0;
@@ -87,7 +66,7 @@ function Products(){
 
     return (
         <section className="Products">
-            <div className="head">{title ? title : selectedTags.join(", ")}</div>
+            <div className="head">{title || "Të gjitha"}</div>
             <div className="shop">
                 <aside>
                     <div className={`title ${expandedCollections ? "expanded" : ""}`} onClick={() => setExpandedCollections(!expandedCollections)}>
@@ -106,17 +85,17 @@ function Products(){
                     </ul>
                 </aside>
                 <main>
-                    {productsToShow .length ? <div className="sorters">
+                    {productsToShow.length ? <div className="sorters">
                         <div className="icons"></div>
                         {/* <Select 
                             
                         /> */}
                     </div> : null}
-                    {productsToShow .length ? <div className="products">
+                    {productsToShow.length ? <div className="products">
                         {productsToShow.map((product, i) => <Product key={product.id} {...product} i={i} />)}
                     </div> : null}
 
-                    {productsToShow .length ? <div className="pagination">
+                    {productsToShow.length ? <div className="pagination">
                         <div onClick={goBack} className={`arrow ${hasPreviousPage ? "active" : ""}`}><span>&larr;</span> Përpara</div>
                         <div onClick={goForward} className={`arrow ${hasNextPage ? "active" : ""}`}>Pas <span>&rarr;</span></div>
                     </div> : null}

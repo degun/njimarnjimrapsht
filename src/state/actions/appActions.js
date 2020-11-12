@@ -1,4 +1,4 @@
-import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES,SET_RECENTLY_VIEWED, SET_MENU_OPEN } from '../types';
+import { SET_CUSTOM_CATEGORIES, SET_SMART_CATEGORIES, SET_TAGS, SET_TYPES,SET_RECENTLY_VIEWED, SET_MENU_OPEN, SET_REGISTERING, SET_LOGGING_IN } from '../types';
 
 export function setCustomCategories(customCategories) {
     return {
@@ -40,5 +40,19 @@ export function setMenuOpen(menuOpen) {
     return {
         type: SET_MENU_OPEN,
         menuOpen
+    }
+}
+
+export function setRegistering(registering) {
+    return {
+        type: SET_REGISTERING,
+        registering
+    }
+}
+
+export function setLoggingIn(loggingIn) {
+    return {
+        type: SET_LOGGING_IN,
+        loggingIn
     }
 }

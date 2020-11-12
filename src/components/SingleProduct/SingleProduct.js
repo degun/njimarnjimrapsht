@@ -26,7 +26,6 @@ function SingleProduct({match}){
     const images = imgs?.edges?.map(({node}) => node.transformedSrc) ?? [];  
     const rvIds = recentlyViewed.map(({handle}) => handle);
 
-
     const products = recommendationsData?.productRecommendations?.map(({id, title, handle, priceRange, compareAtPriceRange, images}) => {
         return {
             id, 
@@ -79,7 +78,6 @@ function SingleProduct({match}){
 
     useEffect(() => {
         if(checkoutId && checkoutLineItemAdded.data && !checkoutLineItemAdded.loading && checkoutLineItemAdded.called){
-            console.log(checkoutLineItemAdded?.data?.checkoutLineItemsAdd?.checkout)
             dispatch(setCheckoutValues(checkoutLineItemAdded?.data?.checkoutLineItemsAdd?.checkout ?? {}))
         }
     }, [checkoutLineItemAdded.data, checkoutLineItemAdded.loading, checkoutLineItemAdded.called])

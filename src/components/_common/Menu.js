@@ -37,7 +37,7 @@ function Menu(){
                 <div className={`link ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
                     {hamburger} Të gjitha kategoritë
                 </div>
-                {smartCategories.map(({handle, title}) => <Link to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
+                {smartCategories.map(({handle, title}) => <Link key={handle} to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
                 <Link to="/rrethnesh" className="link">Rreth nesh</Link>
                 <Link to="/blog" className="link">Blog</Link>
             </nav>
@@ -50,7 +50,7 @@ function Menu(){
                 </div>
             </div>
             <ul className="collections">
-                {menuOpen ? categories.map(({handle, title},i) => <li onClick={() => dispatch(setSelectedCategory({handle, title}))} style={{animationDelay: `${i * 0.1}s`}} onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")} key={`collection-${i}`}>{title} <Icon source={ChevronRightMinor} /></li>) : null}
+                {menuOpen ? categories.map(({handle, title},i) => <li key={handle} onClick={() => dispatch(setSelectedCategory({handle, title}))} style={{animationDelay: `${i * 0.1}s`}} onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")} key={`collection-${i}`}>{title} <Icon source={ChevronRightMinor} /></li>) : null}
             </ul>
             {(handle && menuOpen) ? <div className="products" onMouseEnter={() => setHandle(handle)}  onMouseLeave={() => setHandle("")}>
                {products.map((product, i) => <Product key={product.id} {...product}  i={i} />)}

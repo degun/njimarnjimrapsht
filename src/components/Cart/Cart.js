@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Button from '../_common/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCheckoutValues } from '../../state/actions/checkoutActions';
+import { setMenuOpen } from '../../state/actions/appActions';
 import { useMutation } from '@apollo/client';
 import { REMOVE_LINE_ITEM,  UPDATE_LINE_ITEM } from '../../graphql/mutations';
 import { priced } from '../helpers';
@@ -13,6 +14,10 @@ function Cart(){
     const { id: checkoutId, lineItems, subtotalPrice, totalPrice, totalTax, webUrl } = useSelector(state => state.checkout);
     const [removeLineItem, removedLineItem] = useMutation(REMOVE_LINE_ITEM);
     const [updateLineItem, updatedLineItem] = useMutation(UPDATE_LINE_ITEM);
+
+    useEffect(() => {
+        dispatch(setMenuOpen(false))
+    }, []);
 
     useEffect(() => {
         if(updatedLineItem.data && !updatedLineItem.loading && updatedLineItem.called){
