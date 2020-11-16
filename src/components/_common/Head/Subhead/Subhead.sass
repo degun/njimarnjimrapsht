@@ -16,10 +16,18 @@
         width: 250px
         padding-right: 20px
         svg 
-            width: 100px !important
+            width: 110px
             height: auto
+        .language
+            font-family: "SF Pro", sans-serif
+            color: $secondary
+            white-space: nowrap
+            span, strong
+                margin: 3px
+            &.selected
+                font-weight: bold
     .utilities
-        width: calc( 100% - 250px )
+        flex-grow: 1
         height: 100%
         display: flex
         justify-content: flex-end
@@ -27,86 +35,118 @@
         .item
             margin-right: 30px
             position: relative
-            &:not(:first-child)
+            &:last-child
+                margin-right: 0
+            &.textfield
                 flex-grow: 1
-            .language
-                font-family: "SF Pro", sans-serif
-                color: $secondary
-                span, strong
-                    margin: 3px
-                &.selected
-                    font-weight: bold
+                transition: 0.3s box-shadow $easing
+            &.mobile-textfield-icon
+                display: none
             .Polaris-TextField
-                width: 600px
                 background-color: $input-background
                 &.Polaris-TextField--focus
                     color: $attention
                 .Polaris-Icon
                     stroke-width: 0px
-            .searched-products
-                position: absolute
-                width: 100%
-                height: auto
-                max-height: 0px
-                background-color: $background
-                margin-top: 0px
-                z-index: 5
-                transition: 0.2s max-height cubic-bezier(.17,.67,.01,.88), 0.3s margin-top cubic-bezier(.17,.67,.01,.88)
-                overflow: hidden
-                padding: 0
-                box-shadow: 0px 0px 15px rgba(0,0,0,0.2)
-                &.open
-                    max-height: 800px
-                    margin-top: 20px
-            .hyr
-                position: relative
+        .searched-products
+            position: absolute
+            width: 100%
+            height: auto
+            max-height: 0px
+            background-color: $background
+            margin-top: 0px
+            z-index: 5
+            transition: 0.2s max-height $easing, 0.3s margin-top $easing
+            overflow: hidden
+            padding: 0
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2)
+            &.open
+                max-height: 800px
+                margin-top: 20px
+        .hyr
+            position: relative
+            display: flex
+            flex-direction: column
+            width: auto
+            button
+                width: 100px
+                font-size: 1.2rem 
+                padding: 7px 0
+                background-color: $attention
+                border-color: $attention
+                border: none
+                color: white
+                outline: none
+                border-radius: 3px
                 display: flex
-                flex-direction: column
-                width: auto
-                button
-                    width: 100px
-                    font-size: 1.2rem 
-                    padding: 7px 0
-                    background-color: $attention
-                    border-color: $attention
-                    border: none
-                    color: white
-                    outline: none
-                    border-radius: 3px
-                    display: flex
-                    justify-content: center
-                    align-items: center
-                    box-shadow: none
-                    font-family: "SF Pro", sans-serif
-                    transition: 0.2s background-color linear
-                    .Polaris-Icon
-                        margin: 0
-                    &:hover
-                        cursor: pointer
-                        background-color: mix(black, $attention, 10)
-                    &:focus
-                        background-color:mix(black, $attention, 20)
-                    .Polaris-Icon
-                        fill: transparent
-                        stroke: white
-                .register
-                    position: absolute
-                    bottom: -20px
-                    font-size: 1rem
-                    font-family: "SF Pro", sans-serif
-                    color: #ccc
-                    strong span
-                        font-family: "SF Pro", sans-serif
-                        font-size: 1rem
-                        text-decoration: none
-                        color: $attention
-            .heart-icons
-                position: relative
+                justify-content: center
+                align-items: center
+                box-shadow: none
+                font-family: "SF Pro", sans-serif
+                transition: 0.2s background-color $easing
                 .Polaris-Icon
                     margin: 0
+                &:hover
+                    cursor: pointer
+                    background-color: mix(black, $attention, 10)
+                &:focus
+                    background-color:mix(black, $attention, 20)
+                .Polaris-Icon
                     fill: transparent
-                    stroke: #333
-                    stroke-width: 2px
+                    stroke: white
+            .register
+                position: absolute
+                bottom: -20px
+                font-size: 1rem
+                font-family: "SF Pro", sans-serif
+                color: #ccc
+                strong span
+                    font-family: "SF Pro", sans-serif
+                    font-size: 1rem
+                    text-decoration: none
+                    color: $attention
+        .hyr-icon
+            display: none
+            .Polaris-Icon
+                fill: transparent
+                stroke: #333
+                stroke-width: 2px
+        .heart-icons
+            position: relative
+            .Polaris-Icon
+                margin: 0
+                fill: transparent
+                stroke: #333
+                stroke-width: 2px
+            .quantity
+                position: absolute
+                right: -10px
+                top: -2px
+                background-color: $primary
+                color: white
+                border-radius: 50%
+                width: 14px
+                height: 14px
+                display: flex
+                justify-content: center
+                align-items: center
+                font-size: 0.8rem
+        .kontakto
+            margin: 0 20px
+            min-width: 120px
+            font-size: 1.2rem
+            line-height: 1.3
+            color: $attention
+        .cart
+            display: flex
+            justify-content: space-between
+            align-items: center
+            text-decoration: none
+            .cart-icons
+                position: relative
+                .Polaris-Icon
+                    fill: #573843
+                    stroke: transparent
                 .quantity
                     position: absolute
                     right: -10px
@@ -119,47 +159,90 @@
                     display: flex
                     justify-content: center
                     align-items: center
-                    font-size: 0.8rem
-            .kontakto
-                margin: 0 20px
-                width: 120px
-                font-size: 1.2rem
-                line-height: 1.3
-                color: $attention
-            .cart
-                display: flex
-                justify-content: space-between
-                align-items: center
-                text-decoration: none
-                .cart-icons
-                    position: relative
-                    .Polaris-Icon
-                        fill: #573843
-                        stroke: transparent
-                    .quantity
-                        position: absolute
-                        right: -10px
-                        top: -2px
-                        background-color: $primary
-                        color: white
-                        border-radius: 50%
-                        width: 14px
-                        height: 14px
-                        display: flex
-                        justify-content: center
-                        align-items: center
-                        font-size: 0.9rem
-                .words
-                    line-height: 1.1
-                    margin-left: 14px
-                    font-size: 1.4rem
-                    font-family: "SF Pro", sans-serif
-                    color: #573843
-                    
-                    .shporta
-                        font-weight: 900
-                        letter-spacing: 1px
-                        line-height: 1.4
-                    .cmimi
-                        color: #666
-                        font-size: 1rem
+                    font-size: 0.9rem
+            .words
+                line-height: 1.1
+                margin-left: 14px
+                font-size: 1.4rem
+                font-family: "SF Pro", sans-serif
+                color: #573843
+                
+                .shporta
+                    font-weight: 900
+                    letter-spacing: 1px
+                    line-height: 1.4
+                .cmimi
+                    color: #666
+                    font-size: 1rem
+
+@media(max-width: 1406px)
+    .Subhead
+        width: 90%
+
+@media(max-width: 1116px)
+    .Subhead
+        .kontakto
+            display: none
+
+@media(max-width: 936px)
+    .Subhead
+        .item.hyr
+            display: none
+        .item.hyr-icon
+            display: inline-block
+    
+@media(max-width: 843px)
+    .Subhead
+        .cart
+            margin-right: 0 
+            .words
+                display: none
+
+@media(max-width: 748px)
+    .Subhead
+        padding: 15px 0
+        .utilities
+            .item
+                margin-right: 15px
+                &:last-child
+                    margin-right: 0
+
+@media(max-width: 718px)
+    .Subhead
+        .logospace
+            width: 200px
+            svg
+                width: 90px
+        .utilities
+            .item.textfield
+                min-width: 0px
+
+@media(max-width: 600px)
+    .Subhead
+        .logospace
+            width: 160px
+            padding-right: 0
+            justify-content: flex-start
+            svg
+                padding-right: 15px
+            .language
+                overflow: hidden
+@media(max-width: 500px)
+    .Subhead
+        position: relative
+        .utilities
+            .item.textfield
+                display: none
+                &.searching
+                    position: absolute
+                    display: block
+                    width: 90vw
+                    right: -4vw
+                    box-shadow: 0px 0px 15px rgba(0,0,0,0.2)
+                    .Polaris-TextField
+                        width: auto
+                    .searched-products.open
+                        margin-top: 10px
+                
+            .item.mobile-textfield-icon
+                display: inline-block

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoggingIn, setRegistering } from '../../../../state/actions/appActions';
@@ -8,34 +8,27 @@ import { TextField, Icon } from '@shopify/polaris';
 import { SearchMinor, CustomersMinor, CartMajor } from '@shopify/polaris-icons';
 import SearchProduct from './SearchProduct';
 import { logo } from '../../../icons';
-import { priced } from '../../../helpers';
+import { priced, transformProducts } from '../../../helpers';
 import './Subhead.sass';
 
 function Subhead(){
     const dispatch = useDispatch();
     const [ search, setSearch ] = useState("");
+    const [ searching, setSearching ] = useState(false);
+    const [ focused, setFocused ] = useState(false);
     const [ open, setOpen ] = useState(false);
     const { lineItems, totalPrice } = useSelector(state => state.checkout);
     const quantity = lineItems.edges?.length ?? 0;
-    const { data } = useQuery(GET_PRODUCTS, {variables: {first: 10, query: search ? search : ".........."}});
+    const { data } = useQuery(GET_PRODUCTS, {variables: {first: 5, query: search ? search : ".........."}});
 
-    const products = data?.products?.edges?.map(({node, cursor}) => {
-        const {id, title, handle, priceRange, compareAtPriceRange, images} = node;
-        return {
-            id, 
-            title,
-            handle,
-            price: priceRange.minVariantPrice.amount,
-            compareAtPrice: compareAtPriceRange?.minVariantPrice?.amount,
-            image: images.edges[0].node.transformedSrc,
-            cursor
-        }
-    }) ?? [];
+    const products = transformProducts(data?.products?.edges ?? []);
 
     function onBlur(){
         setTimeout(() => {
-            setOpen(false)
-        }, 300);
+            setOpen(false);
+            setFocused(false);
+            setSearching(false); 
+        }, 200);
     }
 
     return(
@@ -47,33 +40,32 @@ function Subhead(){
                 </div>
             </div>
             <div className="utilities">
-                <div className="item">
-                    <TextField value={search} onFocus={() => setOpen(true)} onBlur={onBlur} onChange={s => setSearch(s)} placeholder="Kërko këtu" prefix={<Icon source={SearchMinor} />} />
+                <div className={`item textfield ${searching ? "searching" : ""}`}>
+                    <TextField focused={focused} value={search} onFocus={() => {setOpen(true);setFocused(true)}} onBlur={onBlur} onChange={s => setSearch(s)} placeholder="Kërko këtu" prefix={<Icon source={SearchMinor} />} />
                     <div className={`searched-products ${open && products.length ? "open" : ""}`}>
                         {products.map((product, i) => <SearchProduct onClick={() => setSearch("")} key={product.id} {...product}  i={i} />)}
                     </div>
                 </div>
-                <div className="item">
-                    <div className="kontakto">Na kontakto këtu nëse<br /> je artizan shqiptar</div>
+                <div className="item kontakto">Na kontakto këtu nëse<br /> je artizan shqiptar</div>
+                <div className="item hyr">
+                    <button onClick={() => dispatch(setLoggingIn(true))}><Icon source={CustomersMinor} /> Hyr</button>
+                    <div className="register">apo <strong><span onClick={() => dispatch(setRegistering(true))}>Regjistrohu tani!</span></strong></div>
                 </div>
-                <div className="item">
-                    <div className="hyr">
-                        <button onClick={() => dispatch(setLoggingIn(true))}><Icon source={CustomersMinor} /> Hyr</button>
-                        <div className="register">apo <strong><span onClick={() => dispatch(setRegistering(true))}>Regjistrohu tani!</span></strong></div>
+                <div onClick={() => dispatch(setLoggingIn(true))} className="item hyr-icon">
+                    <Icon source={CustomersMinor} />
+                </div>
+                <Link to="/shporta" className="item cart">
+                    <div className="cart-icons">
+                        <Icon source={CartMajor} />
+                        <div className="quantity">{quantity}</div>
                     </div>
-                    
-                </div>
-                <div className="item">
-                    <Link to="/shporta" className="cart">
-                        <div className="cart-icons">
-                            <Icon source={CartMajor} />
-                            <div className="quantity">{quantity}</div>
-                        </div>
-                        <div className="words">
-                            <div className="shporta">Shporta</div>
-                            <div className="cmimi">{priced(totalPrice)}</div>
-                        </div>
-                    </Link>
+                    <div className="words">
+                        <div className="shporta">Shporta</div>
+                        <div className="cmimi">{priced(totalPrice)}</div>
+                    </div>
+                </Link>
+                <div onClick={() => {setSearching(true);setFocused(true)}} className="item mobile-textfield-icon">
+                    <Icon source={SearchMinor} />
                 </div>
             </div>
         </div>

@@ -16,45 +16,75 @@
     justify-content: space-between
     overflow: visible
     border-bottom: 1px solid $border
-    nav 
+    .navigation
         display: flex
-        height: 100%
-        align-items: center
-        margin-top: 0
-        .link
+        justify-content: flex-start
+        .all
             display: flex
+            padding-left: 0
+            min-width: 250px
             font-family: "SF Pro", sans-serif
-            color: $secondary
             font-size: 1.7rem
-            padding: 0 20px
-            text-decoration: none
+            padding: 0
+            background-color: mix(white, $secondary, 40)
+            color: $background
+            align-items: center
+            margin-top: 0
+            white-space: nowrap
+            &:hover
+                background-color: mix(white, $secondary, 30)
+                cursor: pointer
+            svg
+                margin-right: 20px
+                height: 1.8rem
+                margin-left: 20px
+                path 
+                    fill: $background
+            &.open
+                background-color: $secondary
+                color: white
+                svg path
+                    fill: white 
+        nav 
+            position: relative
+            display: flex
             height: 100%
             align-items: center
             margin-top: 0
-            transition: 0.5s background-color cubic-bezier(.17,.67,.01,.88)
-            &:hover
-                cursor: pointer
-                background-color: mix(#fff, $secondary, 90)
-                color: #000
-            &:first-child
+            margin-right: 20px
+            overflow-x: auto 
+            // -ms-overflow-style: none
+            // &::-webkit-scrollbar
+            //     display: none
+            .link
                 display: flex
-                padding-left: 0
-                width: 250px
-                background-color: mix(white, $secondary, 40)
-                color: $background
+                font-family: "SF Pro", sans-serif
+                color: $secondary
+                font-size: 1.7rem
+                padding: 0 20px
+                text-decoration: none
+                height: 100%
+                align-items: center
+                margin-top: 0
+                white-space: nowrap
+                transition: 0.5s background-color cubic-bezier(.17,.67,.01,.88)
                 &:hover
-                    background-color: mix(white, $secondary, 30)
-                svg
-                    margin-right: 20px
-                    height: 1.8rem
-                    margin-left: 20px
-                    path 
-                        fill: $background
-                &.open
-                    background-color: $secondary
-                    color: white
-                    svg path
-                        fill: white 
+                    cursor: pointer
+                    background-color: mix(#fff, $secondary, 90)
+                    color: #000
+        .more
+            width: 70px
+            height: 100%
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: $background
+            color: $secondary
+            border: none
+            svg
+                width: 20px
+                path
+                    fill: #333
     .contact
         display: flex
         .contact-item
@@ -64,6 +94,9 @@
             color: mix(white,$secondary,20%)
             font-family: "SF Pro", sans-serif
             margin-right: 20px
+            white-space: nowrap
+            &:last-child
+                margin-right: 0
             .Polaris-Icon
                 margin-right: 10px
                 fill: transparent
@@ -118,4 +151,25 @@
         border: 1px solid #eee
         gap: 8px
         z-index: 2
+
+@media(max-width: 1406px)
+    .Menu
+        width: 90%
+
+@media(max-width: 748px)
+    .Menu
+        height: 45px
+        nav .link, .all
+            font-size: 1.4rem
+
+
+@media(max-width: 666px)
+    .Menu
+        .contact .contact-item 
+            .Polaris-Icon
+                margin-right: 0
+            .text
+                display: none
+
+
         

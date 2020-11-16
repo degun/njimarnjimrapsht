@@ -1,6 +1,5 @@
 @import '../colors.sass'
 
-
 button
     font-family: "SF Pro", sans-serif
     padding: 12px 50px
@@ -38,3 +37,13 @@ button
         padding: 7px 40px
         &:hover 
             background-color: mix(white, $secondary, 10)
+    &.success
+        background-color: $primary
+        color: white
+        border: 1px solid $primary
+        border-radius: 3px
+        outline: none
+        box-shadow: none
+        padding: 7px 40px
+        &:hover 
+            background-color: mix(white, $primary, 10)

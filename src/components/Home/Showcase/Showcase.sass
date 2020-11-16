@@ -25,13 +25,15 @@
         position: relative
         .list
             display: flex
-            width: auto
+            width: calc(100% - 60px)
+            justify-content: flex-start
             margin: 0
             padding-left: 0
             overflow-x: hidden
-            .scroll-menu-arrow
-                padding: 20px
-                cursor: pointer
+            margin-bottom: -1px
+            .menu-wrapper--inner
+                width: calc(100% - 60px) !important
+                white-space: nowrap
             .collection
                 color: $tertiary
                 padding: 8px 40px
@@ -53,13 +55,15 @@
                 &.selected
                     background-color: $tertiary
                     color: $background
-            .menu-wrapper--inner
-                width: 5% !important
-                white-space: nowrap
         .arrows
-            width: 50px
+            width: 60px
             display: flex
             justify-content: space-between
             align-items: center
             svg:hover
                 cursor: pointer
+
+@media(max-width: 1406px)
+    .Showcase
+        width: 90%
+        overflow: visible

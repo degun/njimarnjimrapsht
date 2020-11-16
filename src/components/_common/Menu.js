@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from '@shopify/polaris';
-import { PhoneMajor, EmailMajor, ChevronRightMinor } from '@shopify/polaris-icons';
+import { PhoneMajor, EmailMajor, ChevronRightMinor, HorizontalDotsMinor } from '@shopify/polaris-icons';
 import Product from './Product';
 import { hamburger } from '../icons';
 import { Link } from 'react-router-dom';
@@ -9,10 +9,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setMenuOpen } from '../../state/actions/appActions';
 import { setSelectedCategory } from '../../state/actions/productsActions';
 import { GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
+import { useWindowSize } from '../helpers';
 import './Menu.sass';
 
 function Menu(){
     const dispatch = useDispatch();
+    const { width } = useWindowSize();
     const [handle, setHandle] = useState("");
     const { customCategories, smartCategories, menuOpen } = useSelector(state => state.app);
     const { data: collectionData } = useQuery(GET_COLLECTION_PRODUCTS, {variables: {handle, first: 8}});
@@ -33,20 +35,26 @@ function Menu(){
 
     return(
         <div className="Menu">
-            <nav>
-                <div className={`link ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
+            <div className="navigation">
+                <div className={`all ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
                     {hamburger} Të gjitha kategoritë
                 </div>
-                {smartCategories.map(({handle, title}) => <Link key={handle} to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
-                <Link to="/rrethnesh" className="link">Rreth nesh</Link>
-                <Link to="/blog" className="link">Blog</Link>
-            </nav>
+                {width > 860 ? <nav>
+                    {smartCategories.map(({handle, title}) => <Link key={handle} to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
+                    <Link to="/rrethnesh" className="link">Rreth nesh</Link>
+                    <Link to="/blog" className="link">Blog</Link>
+                </nav> : <div className="more">
+                    <HorizontalDotsMinor />
+                </div>}
+            </div>
             <div className="contact">
                 <div className="contact-item">
-                    <Icon source={PhoneMajor} /> (+355) 69 83 43 334
+                    <Icon source={PhoneMajor} />
+                    <span className="text">(+355) 69 83 43 334</span>
                 </div>
                 <div className="contact-item">
-                    <Icon source={EmailMajor} /> pyetje@1m1w.al
+                    <Icon source={EmailMajor} />
+                    <span className="text">pyetje@1m1w.al</span>
                 </div>
             </div>
             <ul className="collections">

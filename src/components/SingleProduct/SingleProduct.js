@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../_common/Button';
 import Product from '../_common/Product';
 import { withRouter } from 'react-router-dom';
@@ -10,11 +11,10 @@ import { GET_PRODUCT, GET_PRODUCT_RECOMMENDATIONS } from '../../graphql/queries'
 import { CHECKOUT_CREATE, ADD_LINE_ITEM } from '../../graphql/mutations';
 import './SingleProduct.sass';
 
-
 function SingleProduct({match}){
     const dispatch = useDispatch();
     const { recentlyViewed } = useSelector(state => state.app);
-    const { id: checkoutId } = useSelector(state => state.checkout);
+    const { id: checkoutId, lineItems } = useSelector(state => state.checkout);
     const { handle } = match.params;
     const [ selectedImage, setSelectedImage ] = useState(0);
     const [ selectedVariant, setSelectedVariant ] = useState(0);
@@ -24,7 +24,8 @@ function SingleProduct({match}){
     const { id: productId, title, description, images: imgs, variants } = productData?.productByHandle ?? {};
     const { data: recommendationsData } = useQuery(GET_PRODUCT_RECOMMENDATIONS, {variables: {productId}});
     const images = imgs?.edges?.map(({node}) => node.transformedSrc) ?? [];  
-    const rvIds = recentlyViewed.map(({handle}) => handle);
+    const rvIds = recentlyViewed?.map(({handle}) => handle) ?? [];
+    const lineItemsIds = lineItems?.edges?.map(({node}) => node.variant.id) ?? [];
 
     const products = recommendationsData?.productRecommendations?.map(({id, title, handle, priceRange, compareAtPriceRange, images}) => {
         return {
@@ -110,7 +111,7 @@ function SingleProduct({match}){
                         <span className="price">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(priceV2 ? priceV2.amount : 0)}</span>
                         {compareAtPriceV2 ? <span className="compare">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(compareAtPriceV2.amount)}</span> : null}
                     </div>
-                    <Button variant="primary" onClick={addToCart}>Shto në Shportë</Button>
+                    {lineItemsIds.includes(id) ? <Link to="/shporta"><Button variant="success">Shko te Shporta</Button></Link> : <Button variant="primary" onClick={addToCart}>Shto në Shportë</Button>}
                 </div> 
             </div>
             
