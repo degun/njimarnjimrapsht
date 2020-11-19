@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { withNamespaces } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoggingIn, setRegistering } from '../../../../state/actions/appActions';
@@ -9,9 +10,10 @@ import { SearchMinor, CustomersMinor, CartMajor } from '@shopify/polaris-icons';
 import SearchProduct from './SearchProduct';
 import { logo } from '../../../icons';
 import { priced, transformProducts } from '../../../helpers';
+import i18n from '../../../../i18n/i18n';
 import './Subhead.sass';
 
-function Subhead(){
+function Subhead({ t }){
     const dispatch = useDispatch();
     const [ search, setSearch ] = useState("");
     const [ searching, setSearching ] = useState(false);
@@ -31,25 +33,31 @@ function Subhead(){
         }, 200);
     }
 
+    const { language } = i18n;
+
+    const changeLanguage = lng => {
+        i18n.changeLanguage(lng);
+    }
+
     return(
         <div className="Subhead">
             <div className="logospace">
                 <Link to="/">{logo}</Link>
                 <div className="language">
-                    <span>EN</span> / <strong className="selected">AL</strong>
+                    <span onClick={() => changeLanguage("en")} className={language === "en" ? "selected" : ""}>EN</span> / <span onClick={() => changeLanguage("al")} className={language === "al" ? "selected" : ""}>AL</span>
                 </div>
             </div>
             <div className="utilities">
                 <div className={`item textfield ${searching ? "searching" : ""}`}>
-                    <TextField focused={focused} value={search} onFocus={() => {setOpen(true);setFocused(true)}} onBlur={onBlur} onChange={s => setSearch(s)} placeholder="Kërko këtu" prefix={<Icon source={SearchMinor} />} />
+                    <TextField focused={focused} value={search} onFocus={() => {setOpen(true);setFocused(true)}} onBlur={onBlur} onChange={s => setSearch(s)} placeholder={t("Subhead.Kërko këtu")} prefix={<Icon source={SearchMinor} />} />
                     <div className={`searched-products ${open && products.length ? "open" : ""}`}>
                         {products.map((product, i) => <SearchProduct onClick={() => setSearch("")} key={product.id} {...product}  i={i} />)}
                     </div>
                 </div>
-                <div className="item kontakto">Na kontakto këtu nëse<br /> je artizan shqiptar</div>
+                <div className="item kontakto">{t("Subhead.Na kontakto këtu nëse")}<br /> {t("Subhead.je artizan shqiptar")}</div>
                 <div className="item hyr">
-                    <button onClick={() => dispatch(setLoggingIn(true))}><Icon source={CustomersMinor} /> Hyr</button>
-                    <div className="register">apo <strong><span onClick={() => dispatch(setRegistering(true))}>Regjistrohu tani!</span></strong></div>
+                    <button onClick={() => dispatch(setLoggingIn(true))}><Icon source={CustomersMinor} /> {t("Subhead.Hyr")}</button>
+                    <div className="register">{t("Subhead.apo")} <strong><span onClick={() => dispatch(setRegistering(true))}>{t("Subhead.Regjistrohu tani!")}</span></strong></div>
                 </div>
                 <div onClick={() => dispatch(setLoggingIn(true))} className="item hyr-icon">
                     <Icon source={CustomersMinor} />
@@ -60,7 +68,7 @@ function Subhead(){
                         <div className="quantity">{quantity}</div>
                     </div>
                     <div className="words">
-                        <div className="shporta">Shporta</div>
+                        <div className="shporta">{t("Subhead.Shporta")}</div>
                         <div className="cmimi">{priced(totalPrice)}</div>
                     </div>
                 </Link>
@@ -72,4 +80,4 @@ function Subhead(){
     )
 }
 
-export default Subhead;
+export default withNamespaces()(Subhead);

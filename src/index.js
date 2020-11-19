@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from "react-redux";
 import client from "./graphql/client";
 import storeAndPersistor from "./state/store";
+import './i18n/i18n';
 import * as serviceWorker from "./serviceWorker";
 
 const { store, persistor } = storeAndPersistor();

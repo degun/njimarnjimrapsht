@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { withNamespaces } from 'react-i18next';
 import Imazh from './Imazh/Imazh';
 import QuickInfo from './QuickInfo/QuickInfo';
 import Vitrine from './Showcase/Showcase';
@@ -7,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setMenuOpen } from '../../state/actions/appActions';
 import './Home.sass';
 
-function Home() { 
+function Home({ t }) { 
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,12 +19,12 @@ function Home() {
         <section className="Home">
             <Imazh />
             <QuickInfo />
-            <Vitrine title="Produkte të zgjedhura" variant="best-sellers" />
-            <Vitrine title="Produkte të tjera" variant="by-tag" />
-            <Vitrine title="Produkte sipas llojit" variant="by-type" />
+            <Vitrine title={t("Home.Produkte të zgjedhura")} variant="best-sellers" />
+            <Vitrine title={t("Home.Produkte të tjera")} variant="by-tag" />
+            <Vitrine title={t("Home.Produkte sipas llojit")} variant="by-type" />
             <BlogPosts />
         </section>
     )
  }
 
-export default Home;
+export default withNamespaces()(Home);

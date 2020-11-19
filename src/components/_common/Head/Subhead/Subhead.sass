@@ -22,10 +22,14 @@
             font-family: "SF Pro", sans-serif
             color: $secondary
             white-space: nowrap
-            span, strong
+            span
                 margin: 3px
-            &.selected
-                font-weight: bold
+                cursor: pointer
+                color: #666
+                &.selected
+                    font-weight: bold
+                    color: #333
+                    cursor: default
     .utilities
         flex-grow: 1
         height: 100%

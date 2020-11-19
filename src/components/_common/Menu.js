@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withNamespaces } from 'react-i18next';
 import { Icon } from '@shopify/polaris';
 import { PhoneMajor, EmailMajor, ChevronRightMinor, HorizontalDotsMinor } from '@shopify/polaris-icons';
 import Product from './Product';
@@ -12,7 +13,7 @@ import { GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
 import { useWindowSize } from '../helpers';
 import './Menu.sass';
 
-function Menu(){
+function Menu({ t }){
     const dispatch = useDispatch();
     const { width } = useWindowSize();
     const [handle, setHandle] = useState("");
@@ -37,12 +38,12 @@ function Menu(){
         <div className="Menu">
             <div className="navigation">
                 <div className={`all ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
-                    {hamburger} Të gjitha kategoritë
+                    {hamburger} {t("Menu.Të gjitha kategoritë")}
                 </div>
                 {width > 860 ? <nav>
                     {smartCategories.map(({handle, title}) => <Link key={handle} to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
-                    <Link to="/rrethnesh" className="link">Rreth nesh</Link>
-                    <Link to="/blog" className="link">Blog</Link>
+                    <Link to="/rrethnesh" className="link">{t("Menu.Rreth nesh")}</Link>
+                    <Link to="/blog" className="link">{t("Menu.Blog")}</Link>
                 </nav> : <div className="more">
                     <HorizontalDotsMinor />
                 </div>}
@@ -67,4 +68,4 @@ function Menu(){
     )
 }
 
-export default Menu;
+export default withNamespaces()(Menu);
