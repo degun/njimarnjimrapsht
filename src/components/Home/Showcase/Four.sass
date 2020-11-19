@@ -66,7 +66,8 @@
                 background-color: $background
                 position: absolute
                 bottom: -50px
-                padding: 10px 40px
+                padding: 10px 20px
+                height: 35px
                 font-family: "SF Pro", sans-serif
                 display: flex
                 justify-content: space-between
@@ -74,10 +75,10 @@
                 width: 100%
                 .title
                     font-family: "SF Pro", sans-serif
-                    font-size: 1.6rem
+                    font-size: 1.3rem
                 .prices
                     font-family: "SF Pro", sans-serif
-                    font-size: 1.8rem
+                    font-size: 1.3rem
                     font-weight: bold
                     .compare
                         color: #999
@@ -96,13 +97,25 @@
             width: calc(100% + 20px)
             margin-top: 15px
             display: flex
+            justify-content: space-between
             margin-left: -10px
             margin-right: -10px
             margin-bottom: -10px
             background-color: $background
-            .Product:not(:last-child)
-                margin-right: 33px
-            
-    
-            
-        
+
+@media screen and ( max-width: 900px )
+    .Four, .Four.reversed
+        flex-direction: column
+        height: auto
+        .advertised
+            width: 100%
+            height: auto
+            margin-left: 0
+        .four
+            width: 100%
+            height: auto
+            margin-left: 0
+            margin-top: 30px
+            .one
+                width: 100%
+                height: 300px

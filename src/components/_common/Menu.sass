@@ -22,7 +22,7 @@
         .all
             display: flex
             padding-left: 0
-            min-width: 250px
+            width: 250px
             font-family: "SF Pro", sans-serif
             font-size: 1.7rem
             padding: 0
@@ -31,6 +31,7 @@
             align-items: center
             margin-top: 0
             white-space: nowrap
+            transition: 0.2s width $easing
             &:hover
                 background-color: mix(white, $secondary, 30)
                 cursor: pointer
@@ -53,9 +54,6 @@
             margin-top: 0
             margin-right: 20px
             overflow-x: auto 
-            // -ms-overflow-style: none
-            // &::-webkit-scrollbar
-            //     display: none
             .link
                 display: flex
                 font-family: "SF Pro", sans-serif
@@ -72,26 +70,12 @@
                     cursor: pointer
                     background-color: mix(#fff, $secondary, 90)
                     color: #000
-        .more
-            width: 70px
-            height: 100%
-            display: flex
-            justify-content: center
-            align-items: center
-            background-color: $background
-            color: $secondary
-            border: none
-            svg
-                width: 20px
-                path
-                    fill: #333
     .contact
         display: flex
         .contact-item
             display: flex
             align-items: center
             font-size: 1.2rem
-            color: mix(white,$secondary,20%)
             font-family: "SF Pro", sans-serif
             margin-right: 20px
             white-space: nowrap
@@ -103,6 +87,21 @@
                 stroke: $secondary
                 stroke-width: 2px
                 height: 1.8rem
+        div
+            margin-right: 20px
+            .contact-item
+                height: 100%
+                display: flex
+                justify-content: center
+                align-items: center
+                color: mix(white,$secondary,20%)
+                border: none
+                font-size: 1.2rem
+                svg
+                    width: 20px
+                    path
+                        fill: #333
+                        stroke: transparent
     .collections
         position: absolute
         left: 0
@@ -112,15 +111,16 @@
         width: 250px
         height: auto
         max-height: 700px
-        overflow: auto
+        overflow-y: auto
         transition: 0.3s max-height cubic-bezier(.17,.67,.01,.88)
         background-color: mix(transparent, white, 8)
+        transition: 0.2s width $easing
         z-index: 1
-        li 
+        a
             display: flex
             justify-content: space-between
             align-items: center
-            list-style-type: none
+            text-decoration: none
             width: 100%
             padding: 14px 20px
             background-color: white
@@ -128,6 +128,7 @@
             transform: translateX(-10px)
             opacity: 0
             animation: 0.2s appear cubic-bezier(.17,.67,.01,.88) forwards
+            transition: 0.2s width $easing
             &:hover
                 cursor: pointer
                 background-color: mix(white, $secondary, 90)
@@ -151,10 +152,18 @@
         border: 1px solid #eee
         gap: 8px
         z-index: 2
+        .Product
+            margin-bottom: 20px
 
 @media(max-width: 1406px)
     .Menu
         width: 90%
+
+@media(max-width: 1160px)
+    .Menu
+        nav
+            display: none
+
 
 @media(max-width: 748px)
     .Menu
@@ -162,14 +171,54 @@
         nav .link, .all
             font-size: 1.4rem
 
+@media(max-width: 718px)
+    .Menu
+        .navigation
+            .all
+                width: 200px
+                font-size: 1.2rem
+                svg
+                    height: 1.2rem
+                    
+        .collections
+            width: 200px
+            a 
+                padding: 8px 20px
+                font-size: 1.2rem
+                .Polaris-Icon
+                    display: none
+        .products
+            display: none
+
 
 @media(max-width: 666px)
     .Menu
-        .contact .contact-item 
+        .contact .contact-item, .contact div > .contact-item
             .Polaris-Icon
                 margin-right: 0
             .text
                 display: none
+
+@media(max-width: 600px)
+    .Menu
+        .navigation
+            .all
+                width: 160px
+                svg 
+                    margin-right: 5px
+        .collections
+            width: 160px
+
+@media(max-width: 300px)
+    .Menu
+        .navigation
+            width: 50%
+            .all
+                width: 100%
+        .collections
+            width: 50%
+
+
 
 
         

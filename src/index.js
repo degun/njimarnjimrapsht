@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { AppProvider as ShopifyProvider } from "@shopify/polaris";
+import { AppProvider as ShopifyProvider, ThemeProvider } from "@shopify/polaris";
 import { ApolloProvider } from "@apollo/client";
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from "react-redux";
@@ -19,9 +19,11 @@ ReactDOM.render(
       <PersistGate loading={null} persistor={persistor} >
         <ApolloProvider client={client}>
           <ShopifyProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
+            <ThemeProvider theme={{colors: {primary: "#D93E1A"}}}>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </ThemeProvider>
           </ShopifyProvider>
         </ApolloProvider>
       </PersistGate>

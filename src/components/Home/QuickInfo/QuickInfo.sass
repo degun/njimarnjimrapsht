@@ -16,6 +16,9 @@
         img 
             margin-right: 20px
         .words
+            display: flex
+            flex-direction: column
+            justify-content: center
             font-family: "SF Pro", sans-serif
             color: $secondary
             .upper
@@ -28,3 +31,117 @@
     .QuickInfo
         width: 90%
         overflow: visible
+
+@media(max-width: 1000px)
+    .QuickInfo
+        .info
+            width: 200px
+            img
+                width: 30px
+            .words
+                .upper
+                    font-size: 1.1rem
+                    line-height: 1
+                .lower
+                    font-size: 1rem
+                    line-height: 1
+                    margin-top: 3px
+
+@media(max-width: 760px)
+    .QuickInfo
+        .info
+            width: 180px
+            img
+                width: 20px
+                margin-right: 10px
+
+@media(max-width: 760px)
+    .QuickInfo
+        padding: 25px 20px
+        flex-wrap: wrap
+        .info
+            width: 50%
+            &:first-child, &:nth-child(2)
+                margin-bottom: 25px
+            img
+                width: 50px
+                margin-right: 25px
+            .words
+                .upper
+                    font-size: 1.5rem
+                    line-height: 1.2
+                .lower
+                    font-size: 1.1rem
+                    line-height: 1.2
+
+@media(max-width: 600px)
+    .QuickInfo
+        .info
+            width: 50%
+            img
+                width: 40px
+            .words
+                .upper
+                    font-size: 1.3rem
+                .lower
+                    font-size: 1.1rem
+
+@media(max-width: 520px)
+    .QuickInfo
+        .info
+            img
+                width: 30px
+
+@media(max-width: 460px)
+    .QuickInfo
+        padding: 20px
+        .info
+            margin-bottom: 20px
+            &:first-child, &:nth-child(2)
+                margin-bottom: 20px
+            &:nth-child(3), &:last-child
+                margin-bottom: 0
+            img
+                width: 25px
+                margin-right: 10px
+
+@media(max-width: 400px)
+    .QuickInfo
+        .info
+            width: 100%
+            margin-bottom: 20px
+            &:nth-child(3)
+                margin-bottom: 20px
+            img
+                width: 50px
+                margin-right: 25px
+            .words
+                .upper
+                    font-size: 1.3rem
+                .lower
+                    font-size: 1.2rem
+
+@media(max-width: 270px)
+    .QuickInfo
+        .info
+            img
+                width: 40px
+                margin-right: 15px
+            .words
+                .upper
+                    font-size: 1.3rem
+                .lower
+                    font-size: 1.1rem
+
+@media(max-width: 240px)
+    .QuickInfo
+        .info
+            img
+                width: 30px
+                margin-right: 10px
+            .words
+                .upper
+                    font-size: 1.2rem
+                .lower
+                    font-size: 1.1rem
+    

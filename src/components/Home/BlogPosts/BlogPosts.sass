@@ -1,7 +1,8 @@
 @import '../../colors.sass'
 
 .BlogPosts
-    width: 100%
+    width: 1366px
+    margin: 0 auto
     padding: 60px 0
     .head
         width: 1366px
@@ -54,7 +55,19 @@
                     padding-left: 10px
                     padding-right: 10px
 
-@media(max-width: 1406px)
+@media(max-width: 1400px)
     .BlogPosts
         width: 90%
-        overflow: visible
+        .head
+            width: 100%
+        .posts
+            width: 100%
+
+@media(max-width: 1200px)
+    .BlogPosts
+        .posts
+            width: 100%
+            .post
+                width: 100%
+                &:last-child
+                    display: none

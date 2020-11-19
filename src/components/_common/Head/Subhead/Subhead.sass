@@ -9,6 +9,7 @@
     font-family: "SF Pro", sans-serif
     padding: 30px 0
     border-bottom: 1px solid $border
+    transition: 0.2s padding $easing
     .logospace
         display: flex
         justify-content: space-between
@@ -179,30 +180,32 @@
                     color: #666
                     font-size: 1rem
 
-@media(max-width: 1406px)
+@media screen and (max-width: 1406px)
     .Subhead
         width: 90%
+        .utilities .item.cart
+            margin: 0
 
-@media(max-width: 1116px)
+@media screen and (max-width: 1116px)
     .Subhead
         .kontakto
             display: none
 
-@media(max-width: 936px)
+@media screen and (max-width: 936px)
     .Subhead
         .item.hyr
             display: none
         .item.hyr-icon
             display: inline-block
     
-@media(max-width: 843px)
+@media screen and (max-width: 843px)
     .Subhead
         .cart
             margin-right: 0 
             .words
                 display: none
 
-@media(max-width: 748px)
+@media screen and (max-width: 748px)
     .Subhead
         padding: 15px 0
         .utilities
@@ -211,30 +214,34 @@
                 &:last-child
                     margin-right: 0
 
-@media(max-width: 718px)
+@media screen and (max-width: 718px)
     .Subhead
         .logospace
             width: 200px
             svg
                 width: 90px
+            .language
+                font-size: 1.2rem
         .utilities
             .item.textfield
                 min-width: 0px
 
-@media(max-width: 600px)
+@media screen and (max-width: 600px)
     .Subhead
         .logospace
             width: 160px
-            padding-right: 0
-            justify-content: flex-start
             svg
                 padding-right: 15px
             .language
                 overflow: hidden
-@media(max-width: 500px)
+@media screen and (max-width: 500px)
     .Subhead
         position: relative
+        .logospace
+            padding-right: 0
         .utilities
+            .item.cart
+                margin-right: 15px
             .item.textfield
                 display: none
                 &.searching
@@ -250,3 +257,12 @@
                 
             .item.mobile-textfield-icon
                 display: inline-block
+
+@media screen and (max-width: 300px)
+    .Subhead
+        .logospace
+            width: 50%
+            a 
+                width: 50%
+                svg 
+                    width: 100%
