@@ -10,7 +10,7 @@ function Subscribe(){
             <div className="container">
                 <h1>Je artizan dhe dëshiron të na bashkohesh?</h1>
                 <form>
-                    <TextField placeholder="Vendosni emailin tuaj ketu" />
+                    <TextField placeholder="Vendos emailin tënd ketu" />
                     <Button variant="primary">Dërgo</Button>
                 </form>
                 <div className="icons">

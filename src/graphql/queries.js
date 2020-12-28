@@ -230,3 +230,15 @@ export const GET_CHECKOUT = gql`
         }
     }
 `;
+
+export const GET_ARTICLES = gql`
+    query getArticles($first: Int){
+        articles(first: $first){
+            edges{
+                node{
+                  id title handle excerpt image{ transformedSrc }
+                }
+              }
+        }
+    }
+`;

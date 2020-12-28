@@ -6,10 +6,12 @@ function Product({id, title, handle, image, price, compareAtPrice, i}){
     return(
         <Link to={`/produkte/${handle}`} className="Product" style={{animationDelay: `${i*0.1}s`}} key={id}>
             <img src={image} alt={title} />
-            <div className="title">{title}</div>
-            <div className="prices">
-                <span className="price">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(price)}</span>
-                {parseInt(compareAtPrice) !== 0 ? <span className="compare">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(compareAtPrice)}</span> : null}
+            <div className="info">
+                <div className="title">{title}</div>
+                <div className="prices">
+                    <span className="price">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(price)}</span>
+                    {parseInt(compareAtPrice) !== 0 ? <span className="compare">{new Intl.NumberFormat('sq-AL', { style: 'currency', currency: 'ALL' }).format(compareAtPrice)}</span> : null}
+                </div>
             </div>
         </Link>
     )

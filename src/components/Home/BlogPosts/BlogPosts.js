@@ -1,4 +1,8 @@
 import React from 'react';
+import dayjs from 'dayjs';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_ARTICLES } from '../../../graphql/queries';
 import { arrow_left, arrow_right } from '../../icons';
 import blog1 from '../../../images/blog1.png';
 import blog2 from '../../../images/blog2.png';
@@ -6,6 +10,14 @@ import Button from '../../_common/Button';
 import './BlogPosts.sass';
 
 function BlogPosts(){
+
+    const { data } = useQuery(GET_ARTICLES, {variables: {first: 2}});
+
+    const articles = data?.articles?.edges?.map(({node}) => {
+        const { id, handle, title, publishedAt, excerpt, image } = node;
+        return { id, handle, title, publishedAt, excerpt, image: image.transformedSrc }
+    }) ?? [];
+
     return(
         <div className="BlogPosts">
             <div className="head">
@@ -19,24 +31,15 @@ function BlogPosts(){
                 </div>
             </div>
             <div className="posts">
-                <div className="post">
-                    <img src={blog1} alt="" />
+                {articles.map(({id, handle, title, publishedAt, excerpt, image }) => <div key={id} className="post">
+                    <img src={image} alt="" />
                     <div className="post-content">
-                        <div className="data">19 Jan, 2020</div>
-                        <h1>Tradita shqiptare e rruazave dhe punimit artizanal</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                        <Button variant="primary">Më shumë</Button>
+                        <div className="data">{dayjs(publishedAt).format("DD MMM, YYYY")}</div>
+                        <h1>{title}</h1>
+                        <p>{excerpt}</p>
+                        <Link to={`/blog/${handle}`}><Button variant="primary">Më shumë</Button></Link>
                     </div>
-                </div>
-                <div className="post">
-                    <img src={blog2} alt="" />
-                    <div className="post-content">
-                        <div className="data">10 Jan, 2020</div>
-                        <h1>Byzylyke handmade te realizuara ne Shqiperi qe bejne xhiron e botes</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                        <Button variant="primary">Më shumë</Button>
-                    </div>
-                </div>
+                </div>)}
             </div>
         </div>
     )

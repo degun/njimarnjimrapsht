@@ -77,8 +77,6 @@
                     margin-right: 40px
                     width: 220px
                     margin-bottom: 40px
-                    &:nth-child(4n)
-                        margin-right: 0
             .pagination
                 width: 100%
                 display: flex
@@ -130,5 +128,26 @@
                         margin-right: 35px
                         width: 220px
                         margin-bottom: 40px
-                        &:nth-child(4n)
-                            margin-right: 0
+
+@media(max-width: 1406px)
+    .Products
+        width: 90%
+
+@media(max-width: 1000px)
+    .Products
+        .shop main .products
+            flex-direction: column
+            a.Product
+                flex-direction: row
+                height: 180px
+                width: 350px
+                .info
+                    margin-left: 20px
+                    .title
+                        margin-top: 0
+
+@media(max-width: 800px)
+    .Products
+        .shop 
+            aside
+                transform: translateX(-250px)

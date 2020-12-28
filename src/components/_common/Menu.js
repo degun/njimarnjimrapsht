@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { withNamespaces } from 'react-i18next';
 import { Icon, Popover, ActionList } from '@shopify/polaris';
-import { PhoneMajor, EmailMajor, ChevronRightMinor, HorizontalDotsMinor } from '@shopify/polaris-icons';
+import { ChevronRightMinor, HorizontalDotsMinor } from '@shopify/polaris-icons';
 import Product from './Product';
-import { hamburger } from '../icons';
+import { hamburger, phone, mail } from '../icons';
 import { Link, useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useSelector, useDispatch } from 'react-redux';
@@ -99,11 +99,11 @@ function Menu({ t }){
                     <ActionList items={actions} />
                 </Popover>}
                 <div className="contact-item">
-                    <Icon source={PhoneMajor} />
+                    {phone}
                     <span className="text">(+355) 69 83 43 334</span>
                 </div>
                 <div className="contact-item">
-                    <Icon source={EmailMajor} />
+                    {mail}
                     <span className="text">pyetje@1m1w.al</span>
                 </div>
             </div>

@@ -18,16 +18,7 @@ function Four({title, handle, image, description}){
     const products = transformProducts(collectionData?.collectionByHandle?.products?.edges ?? []);
     const productOne = products.length ? products[0] : {};
     const threeProducts = products.length > 1 ? products.slice(1) : [];
-
-    const parameters = {
-        slidesPerView: 3,
-        centeredSlides: true,
-        freeMode: true,
-        loop: true,
-        wrapperClass: "three"
-    }
-
-    const someProducts = width > 900 ? threeProducts : [productOne, ...threeProducts];
+    const someProducts = width > 900 ? threeProducts : products;
 
     return(
         <div className="Four">
@@ -46,9 +37,9 @@ function Four({title, handle, image, description}){
                         </div>
                     </div> : null}
                 </Link> : null}
-                <Slider {...parameters}>
+                <div className="three">
                     {someProducts.map((product, i) => <Product key={product.id} {...product} i={i} />)}
-                </Slider>
+                </div>
             </div> : null}
         </div>
     )

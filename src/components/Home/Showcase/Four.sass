@@ -102,6 +102,15 @@
             margin-right: -10px
             margin-bottom: -10px
             background-color: $background
+        .swiper-container
+            margin: 0
+
+@media screen and ( max-width: 1220px )
+    .Four, .Four.reversed
+        .four .three
+            justify-content: flex-start
+            a.Product:nth-child(3)
+                display: none
 
 @media screen and ( max-width: 900px )
     .Four, .Four.reversed
@@ -119,3 +128,31 @@
             .one
                 width: 100%
                 height: 300px
+            .three
+                justify-content: space-between
+                a.Product:nth-child(3)
+                    display: flex
+
+@media screen and ( max-width: 850px )
+    .Four, .Four.reversed
+        .four .three
+            justify-content: flex-start
+            a.Product
+                width: 30%
+                &:nth-child(4)
+                    display: none
+
+@media screen and ( max-width: 670px )
+    .Four, .Four.reversed
+        .four .three
+            a.Product
+                width: 47.5%
+                &:nth-child(3)
+                    display: none
+
+@media screen and ( max-width: 460px )
+    .Four, .Four.reversed
+        .four .three
+            justify-content: flex-start
+            a.Product:nth-child(2)
+                display: none

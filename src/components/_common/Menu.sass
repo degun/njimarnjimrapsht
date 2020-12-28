@@ -79,6 +79,8 @@
             font-family: "SF Pro", sans-serif
             margin-right: 20px
             white-space: nowrap
+            svg 
+                margin-right: 10px
             &:last-child
                 margin-right: 0
             .Polaris-Icon
@@ -154,10 +156,32 @@
         z-index: 2
         .Product
             margin-bottom: 20px
-
 @media(max-width: 1406px)
     .Menu
-        width: 90%
+        width: 100%
+        overflow: hidden
+        padding-right: 5%
+        padding-left: 5%
+        background-color: $secondary
+        color: white
+        fill: white
+        .navigation
+            .all
+                svg
+                    margin-left: 0
+            nav
+                .link
+                    color: white
+        svg
+            fill: white
+        .contact .contact-item 
+            .Polaris-Icon svg path
+                fill: white
+            .text
+                color: white
+        .collections a
+            opacity: 1
+
 
 @media(max-width: 1160px)
     .Menu
@@ -179,7 +203,8 @@
                 font-size: 1.2rem
                 svg
                     height: 1.2rem
-                    
+            nav .link
+                font-size: 1.2rem   
         .collections
             width: 200px
             a 
