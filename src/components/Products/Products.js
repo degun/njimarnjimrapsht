@@ -6,13 +6,14 @@ import { setSelectedCategory, setSelectedTags } from '../../state/actions/produc
 import { setMenuOpen } from '../../state/actions/appActions';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS, GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
-import { bullet_arrow } from '../icons';
+import { bullet_arrow, hamburger } from '../icons';
 import { transformProducts } from '../helpers';
 import './Products.sass';
 
 function Products(){
     const dispatch = useDispatch();
     const [ cursors, setCursors ] = useState([]);
+    const [ filtersVisible, setFiltersVisible ] = useState(false)
     const { customCategories, smartCategories, tags, recentlyViewed } = useSelector(state => state.app);
     const { selectedCategory, selectedTags } = useSelector(state => state.products);
     const { handle, title } = selectedCategory;
@@ -67,7 +68,7 @@ function Products(){
     return (
         <section className="Products">
             <div className="head">{title || "Të gjitha"}</div>
-            <div className="shop">
+            <div className={`shop ${filtersVisible ? "filters" : ""}`}>
                 <aside>
                     <div className={`title ${expandedCollections ? "expanded" : ""}`} onClick={() => setExpandedCollections(!expandedCollections)}>
                         {bullet_arrow} <h2>Kategoritë</h2>
@@ -86,7 +87,9 @@ function Products(){
                 </aside>
                 <main>
                     {productsToShow.length ? <div className="sorters">
-                        <div className="icons"></div>
+                        <div className="icons">
+                            <span className="hamburger" onClick={() => setFiltersVisible(!filtersVisible)}>{hamburger}</span>
+                        </div>
                         {/* <Select 
                             
                         /> */}

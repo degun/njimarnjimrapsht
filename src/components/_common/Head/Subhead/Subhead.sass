@@ -3,6 +3,7 @@
 .Subhead
     width: 1366px
     margin: 0 auto
+    // position: relative
     display: flex
     justify-content: space-between
     align-items: center
@@ -10,6 +11,10 @@
     padding: 30px 0
     border-bottom: 1px solid $border
     transition: 0.2s padding $easing
+    &.sticky
+        position: sticky
+        position: -webkit-sticky
+        top: 40px
     .logospace
         display: flex
         justify-content: space-between

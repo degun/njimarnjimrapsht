@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withNamespaces } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,9 +19,26 @@ function Subhead({ t }){
     const [ searching, setSearching ] = useState(false);
     const [ focused, setFocused ] = useState(false);
     const [ open, setOpen ] = useState(false);
+    const [scrollY, setScrollY] = useState(0);
+    const [sticky, setSticky] = useState(false);
     const { lineItems, totalPrice } = useSelector(state => state.checkout);
     const quantity = lineItems.edges?.length ?? 0;
     const { data } = useQuery(GET_PRODUCTS, {variables: {first: 5, query: search ? search : ".........."}});
+
+    useEffect(() => {
+        function setScroll(){setScrollY(window.scrollY)}
+        window.addEventListener("scroll", setScroll);
+        return () => window.removeEventListener("scroll", setScroll)
+    }, [])
+
+    useEffect(() => {
+        if(sticky && scrollY < 40){
+            setSticky(false)
+        }
+        if(!sticky && scrollY >= 40){
+            setSticky(true)
+        }
+    }, [scrollY])
 
     const products = transformProducts(data?.products?.edges ?? []);
 
@@ -40,7 +57,7 @@ function Subhead({ t }){
     }
 
     return(
-        <div className="Subhead">
+        <div className={`Subhead ${sticky ? "sticky" : ""}`}>
             <div className="logospace">
                 <Link to="/">{logo}</Link>
                 <div className="language">

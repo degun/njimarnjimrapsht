@@ -26,14 +26,15 @@
             font-family: "SF Pro", sans-serif
             font-size: 1.7rem
             padding: 0
-            background-color: mix(white, $secondary, 40)
-            color: $background
+            background-color: $secondary
+            color: white
             align-items: center
             margin-top: 0
             white-space: nowrap
             transition: 0.2s width $easing
+            text-decoration: none
             &:hover
-                background-color: mix(white, $secondary, 30)
+                background-color: mix(white, $secondary, 10)
                 cursor: pointer
             svg
                 margin-right: 20px
@@ -41,11 +42,6 @@
                 margin-left: 20px
                 path 
                     fill: $background
-            &.open
-                background-color: $secondary
-                color: white
-                svg path
-                    fill: white 
         nav 
             position: relative
             display: flex

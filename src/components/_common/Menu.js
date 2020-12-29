@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withNamespaces } from 'react-i18next';
 import { Icon, Popover, ActionList } from '@shopify/polaris';
 import { ChevronRightMinor, HorizontalDotsMinor } from '@shopify/polaris-icons';
@@ -7,7 +7,6 @@ import { hamburger, phone, mail } from '../icons';
 import { Link, useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMenuOpen } from '../../state/actions/appActions';
 import { setSelectedCategory } from '../../state/actions/productsActions';
 import { GET_COLLECTION_PRODUCTS } from '../../graphql/queries';
 import { useWindowSize } from '../helpers';
@@ -20,7 +19,6 @@ function Menu({ t }){
     const [handle, setHandle] = useState("");
     const [openActions, setOpenActions] = useState(false);
     const { customCategories, smartCategories, menuOpen } = useSelector(state => state.app);
-
 
     let first = 10;
 
@@ -85,9 +83,9 @@ function Menu({ t }){
     return(
         <div className="Menu">
             <div className="navigation">
-                <div className={`all ${menuOpen ? "open" : ""}`} onClick={() => dispatch(setMenuOpen(!menuOpen))} >
+                <Link key={handle} to="/produkte" className="all" >
                     {hamburger} {t("Menu.Të gjitha kategoritë")}
-                </div>
+                </Link>
                 {width > 1160 ? <nav>
                     {smartCategories.map(({handle, title}) => <Link key={handle} to="/produkte" onClick={() => dispatch(setSelectedCategory({handle, title}))} className="link">{title}</Link>)}
                     <Link to="/rrethnesh" className="link">{t("Menu.Rreth nesh")}</Link>
