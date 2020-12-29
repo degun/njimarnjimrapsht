@@ -232,11 +232,16 @@ export const GET_CHECKOUT = gql`
 `;
 
 export const GET_ARTICLES = gql`
-    query getArticles($first: Int){
-        articles(first: $first){
+    query getArticles($first: Int $after: String){
+        articles(first: $first after: $after){
+            pageInfo { 
+                hasNextPage
+                hasPreviousPage
+            }
             edges{
+                cursor
                 node{
-                  id title handle excerpt image{ transformedSrc }
+                  id title handle excerpt contentHtml image{ originalSrc transformedSrc }
                 }
               }
         }

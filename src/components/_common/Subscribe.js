@@ -8,9 +8,10 @@ function Subscribe(){
     return(
         <div className="Subscribe">
             <div className="container">
-                <h1>Je artizan dhe dëshiron të na bashkohesh?</h1>
+                <h1>Dëshiron të na bashkohesh?</h1>
                 <form>
-                    <TextField placeholder="Vendos emailin tënd ketu" />
+                    <TextField type="email" placeholder="Email" />
+                    <TextField type="password" placeholder="Fjalëkalim" />
                     <Button variant="primary">Dërgo</Button>
                 </form>
                 <div className="icons">

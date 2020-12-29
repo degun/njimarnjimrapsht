@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withNamespaces } from 'react-i18next';
 import { Icon, Popover, ActionList } from '@shopify/polaris';
 import { ChevronRightMinor, HorizontalDotsMinor } from '@shopify/polaris-icons';

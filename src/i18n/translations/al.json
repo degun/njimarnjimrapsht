@@ -17,5 +17,20 @@
         "Të gjitha kategoritë": "Të gjitha kategoritë",
         "Rreth nesh": "Rreth nesh",
         "Blog": "Blog"
+    },
+    "Blog": {
+        "Gjithë artikujt": "Gjithë artikujt",
+        "Përpara": "Përpara",
+        "Pas": "Pas"
+    },
+    "QuickInfo": {
+        "Dërgesa falas kudo": "Dërgesa falas kudo",
+        "Në të gjithë Shqipërinë": "Në të gjithë Shqipërinë",
+        "Blerje të sigurta": "Blerje të sigurta",
+        "14 ditë mundësi kthimi": "14 ditë mundësi kthimi",
+        "Na shkruani çdo pyetje": "Na shkruani çdo pyetje",
+        "Ju përgjigjemi 24/7": "Ju përgjigjemi 24/7",
+        "Paguani si të doni": "Paguani si të doni",
+        "E lehtë dhe e sigurt": "E lehtë dhe e sigurt"
     }
 }

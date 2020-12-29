@@ -152,10 +152,10 @@
         z-index: 2
         .Product
             margin-bottom: 20px
+
 @media(max-width: 1406px)
     .Menu
         width: 100%
-        overflow: hidden
         padding-right: 5%
         padding-left: 5%
         background-color: $secondary
@@ -168,6 +168,9 @@
             nav
                 .link
                     color: white
+                    &:hover
+                        background-color: mix(white, $secondary, 10)
+                        color: white
         svg
             fill: white
         .contact .contact-item 
@@ -175,8 +178,13 @@
                 fill: white
             .text
                 color: white
-        .collections a
-            opacity: 1
+        .products
+            width: calc(90% - 250px)
+            left: calc(5% + 250px)
+        .collections
+            margin-left: 5%
+            a
+                opacity: 1
 
 
 @media(max-width: 1160px)
@@ -184,6 +192,10 @@
         nav
             display: none
 
+@media(max-width: 960px)
+    .Menu
+        .collections
+            display: none
 
 @media(max-width: 748px)
     .Menu

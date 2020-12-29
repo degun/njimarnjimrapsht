@@ -71,14 +71,14 @@ function Subhead({ t }){
                         {products.map((product, i) => <SearchProduct onClick={() => setSearch("")} key={product.id} {...product}  i={i} />)}
                     </div>
                 </div>
-                <div className="item kontakto">{t("Subhead.Na kontakto këtu nëse")}<br /> {t("Subhead.je artizan shqiptar")}</div>
+                {/* <div className="item kontakto">{t("Subhead.Na kontakto këtu nëse")}<br /> {t("Subhead.je artizan shqiptar")}</div>
                 <div className="item hyr">
                     <button onClick={() => dispatch(setLoggingIn(true))}><Icon source={CustomersMinor} /> {t("Subhead.Hyr")}</button>
                     <div className="register">{t("Subhead.apo")} <strong><span onClick={() => dispatch(setRegistering(true))}>{t("Subhead.Regjistrohu tani!")}</span></strong></div>
                 </div>
                 <div onClick={() => dispatch(setLoggingIn(true))} className="item hyr-icon">
                     <Icon source={CustomersMinor} />
-                </div>
+                </div> */}
                 <Link to="/shporta" className="item cart">
                     <div className="cart-icons">
                         <Icon source={CartMajor} />

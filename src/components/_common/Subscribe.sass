@@ -19,8 +19,14 @@
         form 
             display: flex
             align-items: center
-            .Polaris-TextField
-                width: 350px
+            > div
+                .Polaris-TextField
+                    width: 200px
+                    margin-right: 20px
+                &:nth-child(2)
+                    .Polaris-TextField
+                        width: 120px
+                        margin-right: 0
             button
                 margin-left: 20px
         .icons
@@ -58,5 +64,9 @@
                 font-size: 2rem
                 text-align: center
             form 
-                .Polaris-TextField
-                    width: 200px
+                > div
+                    .Polaris-TextField
+                        width: 120px
+                    &:nth-child(2)
+                        .Polaris-TextField
+                            width: 70px

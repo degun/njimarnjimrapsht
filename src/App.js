@@ -5,6 +5,7 @@ import Products from './components/Products/Products';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import Cart from './components/Cart/Cart';
 import About from './components/About/About';
+import Blog from './components/Blog/Blog';
 import Container from './components/_common/Container';
 import Register from './components/_common/Auth/Register';
 import Login from './components/_common/Auth/Login';
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/produkte/:handle" component={SingleProduct} />
           <Route exact path="/shporta" component={Cart} />
           <Route exact path="/rrethnesh" component={About} />
+          <Route exact path="/blog" component={Blog} />
         </Switch>
       </Container>
       <Register />

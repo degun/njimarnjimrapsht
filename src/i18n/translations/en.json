@@ -17,5 +17,20 @@
         "Të gjitha kategoritë": "All categories",
         "Rreth nesh": "About us",
         "Blog": "Blog"
+    },
+    "Blog": {
+        "Gjithë artikujt": "All articles",
+        "Përpara": "Next",
+        "Pas": "Previous"
+    },
+    "QuickInfo": {
+        "Dërgesa falas kudo": "Free shipment everywhere",
+        "Në të gjithë Shqipërinë": "In all Albania",
+        "Blerje të sigurta": "Safe purchase",
+        "14 ditë mundësi kthimi": "14 days returns",
+        "Na shkruani çdo pyetje": "Send us any question",
+        "Ju përgjigjemi 24/7": "We answer 24/7",
+        "Paguani si të doni": "Pay as you like",
+        "E lehtë dhe e sigurt": "Easy and safe"
     }
 }
