@@ -1,5 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import { withNamespaces } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_ARTICLES } from '../../../graphql/queries';
@@ -9,7 +10,7 @@ import { arrow_left, arrow_right } from '../../icons';
 import Button from '../../_common/Button';
 import './BlogPosts.sass';
 
-function BlogPosts(){
+function BlogPosts({ t }){
 
     const dispatch = useDispatch();
 
@@ -21,13 +22,16 @@ function BlogPosts(){
         <div className="BlogPosts">
             <div className="head">
                 <div className="left">
-                    <div className="title">Blogu ynë</div>
-                    <Link to="/blog" className="all">Të gjitha shkrimet</Link>
+                    <div className="title">{t("Home.Blogu ynë")}</div>
+                    <Link to="/blog" className="all">{t("Home.Të gjitha shkrimet")}</Link>
                 </div>
                 <div className="arrows">
                     <span>{arrow_left}</span>
                     <span>{arrow_right}</span>
                 </div>
+            </div>
+            <div className="aboutblog">
+                {t("Home.blog-text")}
             </div>
             <div className="posts">
                 {articles.map(({node}) => {
@@ -47,4 +51,4 @@ function BlogPosts(){
     )
 }
 
-export default BlogPosts;
+export default withNamespaces()(BlogPosts);

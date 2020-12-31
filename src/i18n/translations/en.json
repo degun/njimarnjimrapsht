@@ -2,7 +2,11 @@
     "Home": {
         "Produkte të zgjedhura": "Selected products",
         "Produkte të tjera": "Other products",
-        "Produkte sipas llojit": "Products by type"
+        "Produkte sipas llojit": "Products by type",
+        "Më trego më shumë": "Show more",
+        "Blogu ynë": "Our Blog",
+        "Të gjitha shkrimet": "All articles",
+        "blog-text": "Who are we, who are the first artisans that joined us and what makes their journey unique… The stories of the families that carried on the tradition of craft products preserving the best elements of tradition..."
     },
     "Subhead": {
         "Kërko këtu": "Search here",
@@ -21,7 +25,8 @@
     "Blog": {
         "Gjithë artikujt": "All articles",
         "Përpara": "Next",
-        "Pas": "Previous"
+        "Pas": "Previous",
+        "Kush jemi": ""
     },
     "QuickInfo": {
         "Dërgesa falas kudo": "Free shipment everywhere",
@@ -32,5 +37,9 @@
         "Ju përgjigjemi 24/7": "We answer 24/7",
         "Paguani si të doni": "Pay as you like",
         "E lehtë dhe e sigurt": "Easy and safe"
+    }, 
+    "About": {
+        "Rreth nesh": "About us",
+        "teksti": "Nji Mar, Nji Mrapsht started its journey in 2014. Initially, the idea started as an attempt to create a selling space for the artisanal items, made in Albania. The beginning was fragile, when it comes to the variety of items and number of artisans that joined us, but very quickly, our shop became the center of handmade works, where the techniques, materials, items and artisans kept growing in number and variety. the space we were managing was no longer a mere “made in Albania” souvenir shop, but an important meeting point where the artisans showed their works and learned from each-other, exchanging experiences and creating more and more new items, both functional and decorative, finding inspiration in the Albanian heritage. Items inspired in elements of Albanian heritage became the distinctive element that Nji Mar, Nji Mrapsht offered to its local and international clients. Mixing different techniques and materials, contemporary design and elements of local cultural heritage was what made possible the creations of a number of product lines specific to our trademark. Motiv by Nji Mar, Nji Mrapsht comes to life inspired by this successful experience. Motiv - as the elements of our cultural heritage are full of motifs, colors, details. Motiv – as the motif that inspires us every day to move forward with this experience, despite the many challenges and the bumpy road."
     }
 }

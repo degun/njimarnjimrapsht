@@ -2,7 +2,11 @@
     "Home": {
         "Produkte të zgjedhura": "Produkte të zgjedhura",
         "Produkte të tjera": "Produkte të tjera",
-        "Produkte sipas llojit": "Produkte sipas llojit"
+        "Produkte sipas llojit": "Produkte sipas llojit",
+        "Më trego më shumë": "Më trego më shumë",
+        "Blogu ynë": "Blogu ynë",
+        "Të gjitha shkrimet": "Të gjitha shkrimet",
+        "blog-text": "Kush jemi ne, cilët janë artizanët e parë që na u bashkuan e çfarë e bën të veçantë rrugëtimin e tyre... \nHistoritë e familjeve që e çuan përpara ndër vite traditën e prodhimit artizanal duke ruajtur elementët më të mirë të traditës..."
     },
     "Subhead": {
         "Kërko këtu": "Kërko këtu",
@@ -32,5 +36,9 @@
         "Ju përgjigjemi 24/7": "Ju përgjigjemi 24/7",
         "Paguani si të doni": "Paguani si të doni",
         "E lehtë dhe e sigurt": "E lehtë dhe e sigurt"
+    },
+    "About": {
+        "Rreth nesh": "Rreth nesh",
+        "teksti": "Nji Mar, Nji Mrapsht ka nisur përvojën e tij në vitin 2014. \n Në nisje ideja lindi si një përpjëkje për të krijuar një hapësirë tregëtimi të punimeve artizanale të krijuara në Shqipëri. Fillimet ishin të brishta në larminë e punimeve dhe numrin e artizanëve që na u bashkuan, por shumë shpejt, dyqani u kthye në epiqendrën e prodhimeve artizanale, ku teknikat, materialet, artikujt dhe artizanët vecse shtoheshin. \n Hapësira që ne menaxhonim nuk ishte më thjesht një dyqan suveniresh \"made in Albania\", por një vend ku artizanët tregonin veprat e tyre duke mësuar nga njëri-tjetri, duke këmbyer përvoja e duke krijuar gjithmonë e më shumë artikuj të rinj, funksionalë e dekorativë, të mbështetur në traditën më të mirë shqiptare.\n Artikujt e frymëzuar nga elemente të traditës u bënë ndër vite pika më e fortë e veçantisë që Nji Mar, Nji Mrapsht iu ofron klientëve të saj vendas e të huaj. Gërshetimi i teknikave e materialeve, dizajni bashkëkohor ndërthurur me elemente të trashëgimisë kulturore bënë të mundur krijimin e një sërë artikujsh prodhuar eksluzivisht për markën tonë.\n Frymëzuar nga kjo përvojë e jona e suksesshme lindi Motiv by Nji Mar, Nji Mrapsht. Motiv, ashtu sic janë të pasur në ngjyra e detaje elementët materiale të traditës sonë. Motiv, ashtu sic na frymëzon përditë që të vijojmë këtë përvojë, edhe pse vështirësitë janë të shumta e rruga për të ndjekur jo fort e lehtë."
     }
 }

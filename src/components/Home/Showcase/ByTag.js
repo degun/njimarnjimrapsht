@@ -1,4 +1,5 @@
 import React from 'react';
+import { withNamespaces } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Product from '../../_common/Product';
 import { useDispatch } from 'react-redux';
@@ -9,7 +10,7 @@ import { more } from '../../icons';
 import { transformProducts } from '../../helpers';
 import './ByTag.sass';
 
-function ByTag({tag}){
+function ByTag({tag, t}){
     const dispatch = useDispatch();
     const { data } = useQuery(GET_PRODUCTS, {variables: {first: 12, query: `tag:${tag}`}, fetchPolicy: "cache-and-network"});
     const products = transformProducts(data?.products?.edges ?? [])
@@ -19,9 +20,9 @@ function ByTag({tag}){
         <div className="products-by-tag">
             {products.map((product, i) => <Product key={product.id} {...product}  i={i} />)}
         </div>
-        <Link to="/produkte" className="more" onClick={() => dispatch(setSelectedTags([tag]))}>{more} &nbsp;&nbsp;&nbsp; Më trego më shumë</Link>
+        <Link to="/produkte" className="more" onClick={() => dispatch(setSelectedTags([tag]))}>{more} &nbsp;&nbsp;&nbsp; {t("Home.Më trego më shumë")}</Link>
         </React.Fragment>
     )
 }
 
-export default ByTag;
+export default withNamespaces()(ByTag);
