@@ -87,3 +87,18 @@ export const REMOVE_LINE_ITEM = gql`
   }
   ${CheckoutFragment}
 `;
+
+export const ADD_CUSTOMER = gql`
+  mutation addCustomer ($input: CustomerCreateInput!){
+    customerCreate(input: $input) {
+      customer {
+        id
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`

@@ -98,11 +98,11 @@ function Menu({ t }){
                 </Popover>}
                 <div className="contact-item">
                     {phone}
-                    <span className="text">(+355) 69 83 43 334</span>
+                    <a href="tel:+355698343334" className="text">(+355) 69 83 43 334</a>
                 </div>
                 <div className="contact-item">
                     {mail}
-                    <span className="text">pyetje@1m1w.al</span>
+                    <a href="mailto:pyetje@motiv.com.al" className="text">pyetje@motiv.com.al</a>
                 </div>
             </div>
             <div className="collections">

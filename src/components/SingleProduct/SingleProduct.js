@@ -25,7 +25,7 @@ function SingleProduct({match}){
     const { data: recommendationsData } = useQuery(GET_PRODUCT_RECOMMENDATIONS, {variables: {productId}});
     const images = imgs?.edges?.map(({node}) => node.transformedSrc) ?? [];  
     const rvIds = recentlyViewed?.map(({handle}) => handle) ?? [];
-    const lineItemsIds = lineItems?.edges?.map(({node}) => node.variant.id) ?? [];
+    const lineItemsIds = lineItems?.edges?.map(({node}) => node?.variant?.id) ?? [];
 
     const products = recommendationsData?.productRecommendations?.map(({id, title, handle, priceRange, compareAtPriceRange, images}) => {
         return {
@@ -122,7 +122,7 @@ function SingleProduct({match}){
                     <li>Përshkrimi i produktit</li>
                 </ul>
             </div>
-            <div className="description">{description}</div>
+            <div className="description" dangerouslySetInnerHTML={{__html: description}} />
         </div>
         <div className="recommended-products">
             <h2>Produkte të ngjashme</h2>

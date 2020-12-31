@@ -11,6 +11,9 @@
 # production
 /build
 
+# local files
+/files
+
 # design
 *.xd
 

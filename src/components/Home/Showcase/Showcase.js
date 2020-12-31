@@ -26,7 +26,9 @@ function Showcase({title, variant}){
         }
     }, [menu.current])
 
-    if(!categories || !categories.length)return null;
+    if(variant === "best-sellers" &&  !categories || !categories.length)return null;
+    if(variant === "by-tag" &&  (!tags || !tags.filter(Boolean).length))return null;
+    if(variant === "by-type" &&  (!types || !types.filter(Boolean).length))return null;
 
     return (
         <section className="Showcase">
@@ -48,9 +50,9 @@ function Showcase({title, variant}){
                     <span onClick={() => setActive(active === (categories.length - 1) ? 0 : (active + 1))}>{arrow_right}</span>
                 </div>
             </div>
-            {variant === "best-sellers" ? <Four {...smartCategories[active]}  /> : null}
-            {variant === "by-tag" ? <ByTag tag={tags[active]} /> : null}
-            {variant === "by-type" ? <FourReversed type={types[active]} /> : null}
+            {(smartCategories.filter(Boolean).length && variant === "best-sellers") ? <Four {...smartCategories[active]}  /> : null}
+            {(tags.filter(Boolean).length && variant === "by-tag") ? <ByTag tag={tags[active]} /> : null}
+            {(types.filter(Boolean).length && variant === "by-type") ? <FourReversed type={types[active]} /> : null}
         </section>
     )
 }
